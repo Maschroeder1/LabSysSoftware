@@ -17,16 +17,26 @@ class HttpRequestLoginRequester(private val client: HttpClient, private val crea
         } catch (e: Exception) {
             return errorResponse(LoginRequestResult.CONNECTION_ERROR)
         }
-        if (response.body() != null && response.body().contains("Usuário ou senha inválida")) {
-            return errorResponse(LoginRequestResult.LOGIN_ERROR)
-        }
 
-        val cookie = cookieFrom(response)
-        return if (cookie != null) successResponse(cookie) else errorResponse(LoginRequestResult.COOKIE_ERROR)
+        return loginResponseFrom(response)
     }
 
     private fun errorResponse(cause: LoginRequestResult): LoginRequestResponse {
         return LoginRequestResponse(false, cause, null)
+    }
+
+    private fun loginResponseFrom(response: HttpResponse<String>) : LoginRequestResponse {
+        if (response.body() != null) {
+            if (response.body().contains("Usuário ou senha inválida")) {
+                return errorResponse(LoginRequestResult.LOGIN_ERROR)
+            }
+            if (response.body().contains("falhas de logins excedido")) {
+                return errorResponse(LoginRequestResult.CAPTCHA_ERROR)
+            }
+        }
+
+        val cookie = cookieFrom(response)
+        return if (cookie != null) successResponse(cookie) else errorResponse(LoginRequestResult.COOKIE_ERROR)
     }
 
     private fun cookieFrom(response: HttpResponse<String>): Cookie? {

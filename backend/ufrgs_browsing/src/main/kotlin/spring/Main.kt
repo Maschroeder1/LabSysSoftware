@@ -39,6 +39,8 @@ class Endpoints {
                 .body(ApiResponse("Error contacting UFRGS server", response.cookie))
             LoginRequestResult.COOKIE_ERROR -> ResponseEntity.status(500)
                 .body(ApiResponse("Error extracting login result", response.cookie))
+            LoginRequestResult.CAPTCHA_ERROR -> ResponseEntity.status(400)
+                .body(ApiResponse("Requires manual Captcha. Please login to actual website", response.cookie))
             LoginRequestResult.SUCCESS -> ResponseEntity.ok(ApiResponse("Success", response.cookie))
         }
     }
