@@ -42,7 +42,12 @@ class HttpRequestLoginRequester(private val client: HttpClient, private val crea
     private fun cookieFrom(response: HttpResponse<String>): Cookie? {
         val cookieHeader = response.headers().map()["set-cookie"]
 
-        return if (!cookieHeader.isNullOrEmpty()) Cookie(cookieHeader[0]) else null
+        return if (!cookieHeader.isNullOrEmpty()) Cookie(
+            cookieHeader[0].replace(
+                "www1.ufrgs.br",
+                "localhost"
+            )
+        ) else null
     }
 
     private fun successResponse(cookie: Cookie): LoginRequestResponse {

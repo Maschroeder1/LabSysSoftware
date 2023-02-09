@@ -1,16 +1,18 @@
 package spring
 
+import application.UfrgsService
+import infra.HttpRequestCollegeClassRequester
 import infra.HttpRequestCreator
 import infra.HttpRequestLoginRequester
+import infra.HttpRequestPossibilitiesRequester
 import model.*
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.net.http.HttpClient
 
 @SpringBootApplication
@@ -19,6 +21,9 @@ open class Main
 val httpClient: HttpClient = HttpClient.newBuilder().build()
 val httpRequestCreator = HttpRequestCreator()
 val loginRequester: LoginRequester = HttpRequestLoginRequester(httpClient, httpRequestCreator)
+val possibilitiesRequester: PossibilitiesRequester = HttpRequestPossibilitiesRequester()
+val collegeClassRequester: CollegeClassRequester = HttpRequestCollegeClassRequester()
+val ufrgsService = UfrgsService(loginRequester, possibilitiesRequester, collegeClassRequester)
 
 fun main(args: Array<String>) {
     runApplication<Main>(*args)
@@ -40,7 +45,7 @@ class Endpoints {
             return ResponseEntity.status(400).body(ApiResponse("Missing password", null))
         }
 
-        val response = loginRequester.requestLogin(credentials)
+        val response = ufrgsService.requestLogin(credentials)
 
         return when (response.reason) {
             LoginRequestResult.LOGIN_ERROR -> ResponseEntity.status(401)
@@ -51,8 +56,16 @@ class Endpoints {
                 .body(ApiResponse("Error extracting login result", response.cookie))
             LoginRequestResult.CAPTCHA_ERROR -> ResponseEntity.status(400)
                 .body(ApiResponse("Requires manual Captcha. Please login to actual website", response.cookie))
-            LoginRequestResult.SUCCESS -> ResponseEntity.ok(ApiResponse("Success", response.cookie))
+            LoginRequestResult.SUCCESS -> successResponseWithSetCookie(response)
         }
+    }
+
+    private fun successResponseWithSetCookie(loginResponse: LoginRequestResponse): ResponseEntity<ApiResponse> {
+        val headers = HttpHeaders()
+        if (loginResponse.cookie != null) {
+            headers.add("set-cookie", loginResponse.cookie.value)
+        }
+        return ResponseEntity<ApiResponse>(ApiResponse("", loginResponse.cookie), headers, HttpStatus.OK)
     }
 }
 
