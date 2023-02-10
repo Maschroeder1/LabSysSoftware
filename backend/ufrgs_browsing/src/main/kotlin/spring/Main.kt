@@ -30,6 +30,16 @@ class Endpoints {
 
     @PostMapping("/login")
     fun loginEndpoint(@RequestBody credentials: Login): ResponseEntity<ApiResponse> {
+        if (credentials.user.isEmpty() && credentials.password.isEmpty()) {
+            return ResponseEntity.status(400).body(ApiResponse("Missing user and password", null))
+        }
+        if (credentials.user.isEmpty()) {
+            return ResponseEntity.status(400).body(ApiResponse("Missing user", null))
+        }
+        if (credentials.password.isEmpty()) {
+            return ResponseEntity.status(400).body(ApiResponse("Missing password", null))
+        }
+
         val response = loginRequester.requestLogin(credentials)
 
         return when (response.reason) {

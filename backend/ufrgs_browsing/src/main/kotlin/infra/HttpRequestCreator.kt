@@ -7,8 +7,9 @@ import java.net.http.HttpRequest
 
 open class HttpRequestCreator {
 
-    fun createRequest(credentials: Login, endpoint: String): HttpRequest {
-        val parameters = "usuario=${credentials.user}&senha=${URLEncoder.encode(credentials.password, "UTF-8")}"
+    open fun createRequest(credentials: Login, endpoint: String): HttpRequest {
+        val parameters = "usuario=${URLEncoder.encode(credentials.user, "UTF-8")}" +
+                "&senha=${URLEncoder.encode(credentials.password, "UTF-8")}"
 
         return HttpRequest
             .newBuilder()
