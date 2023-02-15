@@ -1,10 +1,7 @@
 package spring
 
 import application.UfrgsService
-import infra.HttpRequestCollegeClassRequester
-import infra.HttpRequestCreator
-import infra.HttpRequestLoginRequester
-import infra.HttpRequestPossibilitiesRequester
+import infra.*
 import model.*
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -20,8 +17,10 @@ open class Main
 
 val httpClient: HttpClient = HttpClient.newBuilder().build()
 val httpRequestCreator = HttpRequestCreator()
+val ufrgsPageParser = JsoupUfrgsPageParser()
 val loginRequester: LoginRequester = HttpRequestLoginRequester(httpClient, httpRequestCreator)
-val possibilitiesRequester: PossibilitiesRequester = HttpRequestPossibilitiesRequester()
+val possibilitiesRequester: PossibilitiesRequester =
+    HttpRequestPossibilitiesRequester(httpClient, httpRequestCreator, ufrgsPageParser)
 val collegeClassRequester: CollegeClassRequester = HttpRequestCollegeClassRequester()
 val ufrgsService = UfrgsService(loginRequester, possibilitiesRequester, collegeClassRequester)
 

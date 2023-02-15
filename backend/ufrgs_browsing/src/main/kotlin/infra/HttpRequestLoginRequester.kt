@@ -9,7 +9,7 @@ class HttpRequestLoginRequester(private val client: HttpClient, private val crea
     private val endpoint = "https://www1.ufrgs.br/sistemas/portal/login?Destino=portal-matricula"
 
     override fun requestLogin(credentials: Login): LoginRequestResponse {
-        val request = creator.createRequest(credentials, endpoint)
+        val request = creator.createLoginRequest(credentials, endpoint)
 
         val response: HttpResponse<String>
         try {
