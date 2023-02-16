@@ -20,20 +20,33 @@ class JsoupUfrgsPageParserTest {
     }
 
     @Test
-    fun parsesClassPage() {
-        val classPage = getClassHtml()
+    fun parsesClassPageWithMultiplePossibilities() {
+        val classPage = getMultiplePossibilitiesClassHtml()
 
         val actual = parser.parseClasses(classPage)
 
-        assertEquals(getClassExpected(), actual)
+        assertEquals(getMultiplePossibilitiesClassExpected(), actual)
+    }
+
+    @Test
+    fun parsesClassPageWithRemoteClassOption() {
+        val classPage = getClassHtmlRemoteClass()
+
+        val actual = parser.parseClasses(classPage)
+
+        assertEquals(getRemoteClassExpected(), actual)
     }
 
     private fun getPossibilitiesHtml(): String {
         return getHtml("/possibilities.html")
     }
 
-    private fun getClassHtml(): String {
-        return getHtml("/algprog.html")
+    private fun getMultiplePossibilitiesClassHtml(): String {
+        return getHtml("/class_multiple.html")
+    }
+
+    private fun getClassHtmlRemoteClass(): String {
+        return getHtml("/class_remote.html")
     }
 
     private fun getHtml(source: String): String {
@@ -44,8 +57,16 @@ class JsoupUfrgsPageParserTest {
         fail("Unable to read html")
     }
 
-    private fun getClassExpected(): CollegeClass {
-        val htmlFile = JsoupUfrgsPageParserTest::class.java.getResource("/algprog_expected.json")
+    private fun getMultiplePossibilitiesClassExpected(): CollegeClass {
+        return getClassExpected("/class_multiple_expected.json")
+    }
+
+    private fun getRemoteClassExpected(): CollegeClass {
+        return getClassExpected("/class_remote_expected.json")
+    }
+
+    private fun getClassExpected(filename: String): CollegeClass {
+        val htmlFile = JsoupUfrgsPageParserTest::class.java.getResource(filename)
         if (htmlFile != null) {
             val gson = Gson()
             return gson.fromJson(htmlFile.readText(), CollegeClass::class.java)

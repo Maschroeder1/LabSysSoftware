@@ -67,6 +67,41 @@ class Endpoints {
         }
         return ResponseEntity<ApiResponse>(ApiResponse("", loginResponse.cookie), headers, HttpStatus.OK)
     }
+
+    @GetMapping("/classes")
+    fun classesEndpoint(@RequestHeader Cookie: String?): ResponseEntity<ApiResponse> {
+        if (Cookie.isNullOrEmpty()) {
+            return ResponseEntity.status(401).body(ApiResponse("Missing cookie", null))
+        }
+
+        return try {
+            val classes = ufrgsService.requestEnrollmentPossibilities(cookieFrom(Cookie))
+            ResponseEntity.ok(ApiResponse("Ok", classes))
+        } catch (e: OutdatedCookieException) {
+            ResponseEntity.status(401).body(ApiResponse("Outdated cookie", null))
+        } catch (e: Exception) {
+            ResponseEntity.status(500).body(ApiResponse("Internal server error", null))
+        } catch (e: CouldNotParseException) {
+            ResponseEntity.status(501).body(ApiResponse("Error parsing UFRGS response", e.message))
+        } catch (e: CouldNotGetUfrgsPageException) {
+            ResponseEntity.status(502).body(ApiResponse("Error contacting UFRGS", e.message))
+        }
+    }
+
+    private fun cookieFrom(inputCookie: String): Cookie {
+        var partialCookie = inputCookie.trim()
+        if (!partialCookie.endsWith(";")) {
+            partialCookie += ";"
+        }
+        if (!partialCookie.contains("Path")) {
+            partialCookie += " Path=/;"
+        }
+        if (!partialCookie.contains("Domain")) {
+            partialCookie += " Domain=www1.ufrgs.br;"
+        }
+
+        return Cookie(partialCookie)
+    }
 }
 
 data class ApiResponse(val message: String, val content: Any?) {}

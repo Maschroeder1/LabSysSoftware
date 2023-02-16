@@ -1,0 +1,28 @@
+{
+  "timeslots": [
+    {
+      "classIdentifier": "D",
+      "availableSlots": 30,
+      "professors": [
+        "Maur�cio Andrade Weiss"
+      ],
+      "scheduledTimes": [
+        {
+          "day": "Ter�a",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "location": "EAD",
+          "locationMap": null
+        },
+        {
+          "day": "Quinta",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "location": "EAD",
+          "locationMap": null
+        }
+      ]
+    }
+  ],
+  "credits": 4
+}

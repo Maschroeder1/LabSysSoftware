@@ -26,6 +26,9 @@ class HttpRequestLoginRequester(private val client: HttpClient, private val crea
     }
 
     private fun loginResponseFrom(response: HttpResponse<String>) : LoginRequestResponse {
+        if (response.statusCode() != 200) {
+            return errorResponse(LoginRequestResult.CONNECTION_ERROR)
+        }
         if (response.body() != null) {
             if (response.body().contains("Usuário ou senha inválida")) {
                 return errorResponse(LoginRequestResult.LOGIN_ERROR)

@@ -100,6 +100,7 @@ class HttpRequestLoginRequesterTest {
 
         `when`(httpResponse.body()).thenReturn("")
         `when`(httpResponse.headers()).thenReturn(HttpHeaders.of(mapOf("set-cookie" to listOf("a value")), TestFiler()))
+        `when`(httpResponse.statusCode()).thenReturn(200)
 
         return httpResponse as HttpResponse<String>
     }
@@ -109,6 +110,7 @@ class HttpRequestLoginRequesterTest {
 
         `when`(httpResponse.body()).thenReturn("<body>(...) Usuário ou senha inválida (...)</body>")
         `when`(httpResponse.headers()).thenReturn(HttpHeaders.of(mapOf(), TestFiler()))
+        `when`(httpResponse.statusCode()).thenReturn(200)
 
         return httpResponse as HttpResponse<String>
     }
@@ -118,6 +120,7 @@ class HttpRequestLoginRequesterTest {
 
         `when`(httpResponse.body()).thenReturn("<body>(...) falhas de logins excedido (...)</body>")
         `when`(httpResponse.headers()).thenReturn(HttpHeaders.of(mapOf(), TestFiler()))
+        `when`(httpResponse.statusCode()).thenReturn(200)
 
         return httpResponse as HttpResponse<String>
     }
@@ -127,6 +130,7 @@ class HttpRequestLoginRequesterTest {
 
         `when`(httpResponse.body()).thenReturn("success body")
         `when`(httpResponse.headers()).thenReturn(HttpHeaders.of(mapOf(), TestFiler()))
+        `when`(httpResponse.statusCode()).thenReturn(200)
 
         return httpResponse as HttpResponse<String>
     }

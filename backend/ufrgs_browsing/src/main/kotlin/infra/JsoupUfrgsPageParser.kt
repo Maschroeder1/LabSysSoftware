@@ -53,22 +53,43 @@ class JsoupUfrgsPageParser : UfrgsPageParser {
     }
 
     private fun toScheduleTimeList(elem: Element?): List<ScheduleTime> {
-        return elem?.getElementsByTag("li")
-            ?.filter { e -> e.getElementsByTag("b").isNullOrEmpty()  }
-            ?.map { e -> toScheduleTime(e) }
-            ?: emptyList()
+        val liElements = elem?.getElementsByTag("li") ?: throw CouldNotParseException()
+
+        return if (hasRemoteClass(liElements)) {
+            liElements
+                .filter { e -> !isRemoteClass(e) }
+                .filter { e -> e.getElementsByTag("b").isNullOrEmpty() }
+                .map { e -> toScheduleTime(e, "EAD", null) }
+        } else {
+            liElements
+                .filter { e -> e.getElementsByTag("b").isNullOrEmpty() }
+                .map { e -> toScheduleTime(e) }
+        }
     }
 
-    private fun toScheduleTime(elem: Element?): ScheduleTime {
-        val location = elem?.getElementsByTag("a")?.first()?.text() ?: ""
-        val locationMap = elem?.getElementsByClass("clicavel")?.first()?.attr("href")
-        val text = elem?.textNodes()?.first()?.text()
+    private fun hasRemoteClass(elements: Elements): Boolean {
+        return elements.any { node -> isRemoteClass(node) }
+    }
+
+    private fun isRemoteClass(element: Element): Boolean {
+        return element.text().contains("Ensino a Dist")
+    }
+
+    private fun toScheduleTime(elem: Element, location: String, locationMap: String?): ScheduleTime {
+        val text = elem.textNodes().first()?.text()
         val day = text?.substringBefore(" ") ?: "???"
         val times = (text?.substringAfter(" ")?.split(" - ") ?: listOf("?", "?")).toMutableList()
         if (times[1].contains(" ")) {
             times[1] = times[1].substringBefore(" ")
         }
         return ScheduleTime(day, times[0].trim(), times[1].trim(), location, locationMap)
+    }
+
+    private fun toScheduleTime(elem: Element): ScheduleTime {
+        val location = elem.getElementsByTag("a").first()?.text() ?: ""
+        val locationMap = elem.getElementsByClass("clicavel").first()?.attr("href")
+
+        return toScheduleTime(elem, location, locationMap)
     }
 
     private fun getCreditCount(doc: Document): Int {
