@@ -49,11 +49,21 @@ class HttpRequestCreatorTest {
         val cookie = Cookie("some localhost cookie")
         val endpoint = "http://www.somewhere.com"
 
-        val result = httpRequestCreator.createPossibilitiesRequest(cookie, endpoint)
+        val result = httpRequestCreator.createGetRequest(cookie, endpoint)
 
         assertEquals(URI.create("http://www.somewhere.com"), result.uri())
         val headers = result.headers()
         assertEquals(1, headers.map().size)
         assertEquals("some www1.ufrgs.br cookie", headers.firstValue("Cookie").get())
+    }
+
+    @Test
+    fun createsGetRequest() {
+        val endpoint = "http://www.somewhere.com"
+
+        val result = httpRequestCreator.createGetRequest(endpoint)
+
+        assertEquals(URI.create("http://www.somewhere.com"), result.uri())
+        assertEquals(0, result.headers().map().size)
     }
 }

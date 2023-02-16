@@ -21,7 +21,7 @@ open class HttpRequestCreator {
             .build()
     }
 
-    open fun createPossibilitiesRequest(cookie: Cookie, endpoint: String): HttpRequest {
+    open fun createGetRequest(cookie: Cookie, endpoint: String): HttpRequest {
         val cookieValue = cookie.value.replace("localhost", "www1.ufrgs.br")
 
         return HttpRequest
@@ -29,6 +29,14 @@ open class HttpRequestCreator {
             .uri(URI.create(endpoint))
             .GET()
             .header("Cookie", cookieValue)
+            .build()
+    }
+
+    open fun createGetRequest(endpoint: String) : HttpRequest {
+        return HttpRequest
+            .newBuilder()
+            .uri(URI.create(endpoint))
+            .GET()
             .build()
     }
 }

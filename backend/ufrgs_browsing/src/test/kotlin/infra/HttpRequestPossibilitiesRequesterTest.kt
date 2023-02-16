@@ -22,7 +22,7 @@ class HttpRequestPossibilitiesRequesterTest {
         val request = mock(HttpRequest::class.java)
         val response = mock(HttpResponse::class.java)
         val expected = listOf(ClassCode("an activity", "a hab", "a course", "a semester"))
-        `when`(creator.createPossibilitiesRequest(cookie, "https://www1.ufrgs.br/especial/index.php?cods=1,1,2,5"))
+        `when`(creator.createGetRequest(cookie, "https://www1.ufrgs.br/especial/index.php?cods=1,1,2,5"))
             .thenReturn(request)
         `when`(client.send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java)))
             .thenReturn(response)

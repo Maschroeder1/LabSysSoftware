@@ -31,7 +31,7 @@ class UfrgsServiceTest {
                     Timeslot(
                         "CLASS1",
                         4,
-                        listOf(Schedule(listOf("Prof1"), listOf(ScheduleTime("MON", "8:30", "10:10", "EAD", null))))
+                        listOf("Prof1"), listOf(ScheduleTime("MON", "8:30", "10:10", "EAD", null))
                     )
                 ), 2
             )

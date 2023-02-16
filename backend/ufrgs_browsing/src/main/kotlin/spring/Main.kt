@@ -21,7 +21,8 @@ val ufrgsPageParser = JsoupUfrgsPageParser()
 val loginRequester: LoginRequester = HttpRequestLoginRequester(httpClient, httpRequestCreator)
 val possibilitiesRequester: PossibilitiesRequester =
     HttpRequestPossibilitiesRequester(httpClient, httpRequestCreator, ufrgsPageParser)
-val collegeClassRequester: CollegeClassRequester = HttpRequestCollegeClassRequester()
+val collegeClassRequester: CollegeClassRequester =
+    HttpRequestCollegeClassRequester(httpClient, httpRequestCreator, ufrgsPageParser)
 val ufrgsService = UfrgsService(loginRequester, possibilitiesRequester, collegeClassRequester)
 
 fun main(args: Array<String>) {

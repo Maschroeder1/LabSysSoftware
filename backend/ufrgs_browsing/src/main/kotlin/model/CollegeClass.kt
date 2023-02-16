@@ -3,7 +3,7 @@ package model
 data class CollegeClass(val timeslots: List<Timeslot>, val credits: Int) {}
 
 data class Timeslot(
-    val classIdentifier: String, val availableSlots: Int, val schedules: List<Schedule>
+    val classIdentifier: String, val availableSlots: Int, val professors: List<String>, val scheduledTimes: List<ScheduleTime>
 ) {}
 
 data class Schedule(val professors: List<String>, val scheduledTimes: List<ScheduleTime>) {}

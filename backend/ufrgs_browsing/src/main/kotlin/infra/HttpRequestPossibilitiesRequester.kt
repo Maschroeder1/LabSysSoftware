@@ -14,7 +14,7 @@ class HttpRequestPossibilitiesRequester(
     private val endpoint = "https://www1.ufrgs.br/especial/index.php?cods=1,1,2,5"
 
     override fun requestPossibilities(cookie: Cookie): List<ClassCode> {
-        val request = creator.createPossibilitiesRequest(cookie, endpoint)
+        val request = creator.createGetRequest(cookie, endpoint)
 
         try {
             val response = client.send(request, HttpResponse.BodyHandlers.ofString())
