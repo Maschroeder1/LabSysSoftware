@@ -15,7 +15,7 @@ import java.net.http.HttpClient
 @SpringBootApplication
 open class Main
 
-val httpClient: HttpClient = HttpClient.newBuilder().build()
+val httpClient: HttpClient = HttpClient.newBuilder().followRedirects(HttpClient.Redirect.NORMAL).build()
 val httpRequestCreator = HttpRequestCreator()
 val ufrgsPageParser = JsoupUfrgsPageParser()
 val loginRequester: LoginRequester = HttpRequestLoginRequester(httpClient, httpRequestCreator)
