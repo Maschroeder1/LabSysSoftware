@@ -77,14 +77,16 @@ class Endpoints {
         return try {
             val classes = ufrgsService.requestEnrollmentPossibilities(cookieFrom(Cookie))
             ResponseEntity.ok(ApiResponse("Ok", classes))
+        } catch (e: NoPossibilitiesException) {
+            ResponseEntity.status(400).body(ApiResponse("No available classes", emptyList<ClassCode>()))
         } catch (e: OutdatedCookieException) {
             ResponseEntity.status(401).body(ApiResponse("Outdated cookie", null))
-        } catch (e: Exception) {
-            ResponseEntity.status(500).body(ApiResponse("Internal server error", null))
         } catch (e: CouldNotParseException) {
             ResponseEntity.status(501).body(ApiResponse("Error parsing UFRGS response", e.message))
         } catch (e: CouldNotGetUfrgsPageException) {
             ResponseEntity.status(502).body(ApiResponse("Error contacting UFRGS", e.message))
+        } catch (e: Exception) {
+            ResponseEntity.status(500).body(ApiResponse("Internal server error", null))
         }
     }
 

@@ -9,6 +9,16 @@ import java.net.http.HttpRequest
 open class HttpRequestCreator {
 
     open fun createLoginRequest(credentials: Login, endpoint: String): HttpRequest {
+        return internalCreateLoginRequest(credentials, endpoint)!!.build()
+    }
+
+    open fun createLoginRequest(credentials: Login, cookie: Cookie, endpoint: String): HttpRequest {
+        return internalCreateLoginRequest(credentials, endpoint)!!
+            .header("Cookie", cookie.value)
+            .build()
+    }
+
+    private fun internalCreateLoginRequest(credentials: Login, endpoint: String) : HttpRequest.Builder? {
         val parameters = "usuario=${URLEncoder.encode(credentials.user, "UTF-8")}" +
                 "&senha=${URLEncoder.encode(credentials.password, "UTF-8")}"
 
@@ -18,7 +28,6 @@ open class HttpRequestCreator {
             .POST(HttpRequest.BodyPublishers.ofString(parameters))
             .header("Content-Type", "application/x-www-form-urlencoded")
             .header("cache-control", "no-cache")
-            .build()
     }
 
     open fun createGetRequest(cookie: Cookie, endpoint: String): HttpRequest {

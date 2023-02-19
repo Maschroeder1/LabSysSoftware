@@ -18,7 +18,12 @@ class HttpRequestLoginRequester(private val client: HttpClient, private val crea
             return errorResponse(LoginRequestResult.CONNECTION_ERROR)
         }
 
-        return loginResponseFrom(response)
+        val loginResponse = loginResponseFrom(response)
+        return if (loginResponse.cookie != null && cookieIsInactive(response.body())) {
+            loginResponseWithActivatedCookie(credentials, loginResponse.cookie)
+        } else {
+            loginResponseFrom(response)
+        }
     }
 
     private fun errorResponse(cause: LoginRequestResult): LoginRequestResponse {
@@ -26,7 +31,7 @@ class HttpRequestLoginRequester(private val client: HttpClient, private val crea
     }
 
     private fun loginResponseFrom(response: HttpResponse<String>) : LoginRequestResponse {
-        if (response.statusCode() != 200) {
+        if (response.statusCode() >= 400) {
             return errorResponse(LoginRequestResult.CONNECTION_ERROR)
         }
         if (response.body() != null) {
@@ -55,5 +60,24 @@ class HttpRequestLoginRequester(private val client: HttpClient, private val crea
 
     private fun successResponse(cookie: Cookie): LoginRequestResponse {
         return LoginRequestResponse(true, LoginRequestResult.SUCCESS, cookie)
+    }
+
+    private fun cookieIsInactive(html: String): Boolean {
+         return html.contains("o login novamente")
+    }
+
+    private fun loginResponseWithActivatedCookie(credentials: Login, cookie: Cookie): LoginRequestResponse {
+        return try {
+            val request = creator.createLoginRequest(credentials, cookie, endpoint)
+            val response = client.send(request, HttpResponse.BodyHandlers.ofString())
+
+            if (response.body().isEmpty()) {
+                successResponse(cookie)
+            } else {
+                errorResponse(LoginRequestResult.COOKIE_ERROR)
+            }
+        } catch (e: Exception) {
+            errorResponse(LoginRequestResult.CONNECTION_ERROR)
+        }
     }
 }
