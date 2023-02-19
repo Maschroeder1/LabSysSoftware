@@ -51,6 +51,9 @@ class HttpRequestPossibilitiesRequester(
         if (e is InterruptedException) {
             return e
         }
+        if (e is OutdatedCookieException) {
+            return e
+        }
         return CouldNotGetUfrgsPageException("Error contacting UFRGS server")
     }
 }
