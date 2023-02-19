@@ -38,6 +38,28 @@ class HttpRequestPossibilitiesRequesterTest {
         val actual = requester.requestPossibilities(cookie)
 
         assertEquals(expected, actual)
+        verify(client, times(1)).send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java))
+    }
+
+    @Test
+    fun returnsResultsFromRetrialWhenWasRedirected() {
+        val cookie = Cookie("any cookie")
+        val request = mock(HttpRequest::class.java)
+        val response = mock(HttpResponse::class.java)
+        val expected = listOf(ClassCode("an activity", "a hab", "a course", "a semester"))
+        `when`(creator.createGetRequest(cookie, "https://www1.ufrgs.br/especial/index.php?cods=1,1,2,5"))
+            .thenReturn(request)
+        `when`(client.send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java)))
+            .thenReturn(response)
+        `when`(response.statusCode()).thenReturn(200)
+        `when`(response.body()).thenReturn("any html")
+        `when`(response.uri()).thenReturn(URI.create("http://example.com"))
+        `when`(parser.parsePossibilities("any html")).thenReturn(expected)
+
+        val actual = requester.requestPossibilities(cookie)
+
+        assertEquals(expected, actual)
+        verify(client, times(2)).send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java))
     }
 
     @Test
