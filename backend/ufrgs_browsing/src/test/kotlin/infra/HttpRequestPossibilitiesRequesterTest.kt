@@ -3,11 +3,13 @@ package infra
 import model.ClassCode
 import model.Cookie
 import model.CouldNotGetUfrgsPageException
+import model.NoPossibilitiesException
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.*
 import java.io.IOException
+import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
@@ -30,6 +32,7 @@ class HttpRequestPossibilitiesRequesterTest {
             .thenReturn(response)
         `when`(response.statusCode()).thenReturn(200)
         `when`(response.body()).thenReturn("any html")
+        `when`(response.uri()).thenReturn(URI.create("http://example.com?cods=1,1,2,5"))
         `when`(parser.parsePossibilities("any html")).thenReturn(expected)
 
         val actual = requester.requestPossibilities(cookie)
@@ -38,7 +41,7 @@ class HttpRequestPossibilitiesRequesterTest {
     }
 
     @Test
-    fun throwsWhenGetsNon200Response() {
+    fun throwsWhenGetsNonSuccessResponse() {
         val cookie = Cookie("any cookie")
         val request = mock(HttpRequest::class.java)
         val response = mock(HttpResponse::class.java)
@@ -46,12 +49,13 @@ class HttpRequestPossibilitiesRequesterTest {
             .thenReturn(request)
         `when`(client.send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java)))
             .thenReturn(response)
-        `when`(response.statusCode()).thenReturn(302)
+        `when`(response.statusCode()).thenReturn(400)
+        `when`(response.uri()).thenReturn(URI.create("http://example.com?cods=1,1,2,5"))
 
         val exception = assertThrows(CouldNotGetUfrgsPageException::class.java) {
             requester.requestPossibilities(cookie)
         }
-        assertEquals("Bad status code 302", exception.message)
+        assertEquals("Bad status code 400", exception.message)
     }
 
     @Test
@@ -63,6 +67,7 @@ class HttpRequestPossibilitiesRequesterTest {
             .thenReturn(request)
         `when`(client.send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java)))
             .thenReturn(response)
+        `when`(response.uri()).thenReturn(URI.create("http://example.com?cods=1,1,2,5"))
         `when`(response.statusCode()).thenReturn(200)
 
         val exception = assertThrows(CouldNotGetUfrgsPageException::class.java) {
@@ -111,12 +116,12 @@ class HttpRequestPossibilitiesRequesterTest {
         `when`(client.send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java)))
             .thenReturn(response)
         `when`(response.statusCode()).thenReturn(200)
+        `when`(response.uri()).thenReturn(URI.create("http://example.com?cods=1,1,2,5"))
         `when`(response.body()).thenReturn("any html")
         `when`(parser.parsePossibilities("any html")).thenReturn(listOf())
 
-        val exception = assertThrows(CouldNotGetUfrgsPageException::class.java) {
+        assertThrows(NoPossibilitiesException::class.java) {
             requester.requestPossibilities(cookie)
         }
-        assertEquals("Could not find any classes", exception.message)
     }
 }
