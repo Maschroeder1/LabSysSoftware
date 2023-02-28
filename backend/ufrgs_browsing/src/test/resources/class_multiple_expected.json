@@ -1,0 +1,217 @@
+{
+  "timeslots": [
+    {
+      "classIdentifier": "A",
+      "availableSlots": 1,
+      "professors": [
+        "MARA ABEL"
+      ],
+      "scheduledTimes": [
+        {
+          "day": "Segunda",
+          "startTime": "13:30",
+          "endTime": "15:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Quarta",
+          "startTime": "13:30",
+          "endTime": "15:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Quinta",
+          "startTime": "13:30",
+          "endTime": "15:10",
+          "location": ""
+        }
+      ]
+    },
+    {
+      "classIdentifier": "D",
+      "availableSlots": 4,
+      "professors": [
+        "LUCAS MELLO SCHNORR",
+        "MARCELO WALTER"
+      ],
+      "scheduledTimes": [
+        {
+          "day": "Segunda",
+          "startTime": "15:30",
+          "endTime": "17:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Quarta",
+          "startTime": "15:30",
+          "endTime": "17:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Quinta",
+          "startTime": "15:30",
+          "endTime": "17:10",
+          "location": "Laborat�rio de Ensino 102 - 43413 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d1885"
+        }
+      ]
+    },
+    {
+      "classIdentifier": "F",
+      "availableSlots": 11,
+      "professors": [
+        "Joel Luis Carbonera",
+        "THIAGO LOPES TRUGILLO DA SILVEIRA"
+      ],
+      "scheduledTimes": [
+        {
+          "day": "Ter�a",
+          "startTime": "13:30",
+          "endTime": "15:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Quinta",
+          "startTime": "13:30",
+          "endTime": "15:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Sexta",
+          "startTime": "15:30",
+          "endTime": "17:10",
+          "location": "Laborat�rio de Ensino 101 - 43413 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d1885"
+        }
+      ]
+    },
+    {
+      "classIdentifier": "H",
+      "availableSlots": 10,
+      "professors": [
+        "Renan de Queiroz Maffei"
+      ],
+      "scheduledTimes": [
+        {
+          "day": "Ter�a",
+          "startTime": "15:30",
+          "endTime": "17:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Quinta",
+          "startTime": "15:30",
+          "endTime": "17:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Sexta",
+          "startTime": "15:30",
+          "endTime": "17:10",
+          "location": "Laborat�rio de Ensino 102 - 43413 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d1885"
+        }
+      ]
+    },
+    {
+      "classIdentifier": "B",
+      "availableSlots": 0,
+      "professors": [
+        "MARA ABEL"
+      ],
+      "scheduledTimes": [
+        {
+          "day": "Segunda",
+          "startTime": "13:30",
+          "endTime": "15:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Quarta",
+          "startTime": "13:30",
+          "endTime": "15:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Quinta",
+          "startTime": "15:30",
+          "endTime": "17:10",
+          "location": "Laborat�rio de Ensino 104 - 43413 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d1885"
+        }
+      ]
+    },
+    {
+      "classIdentifier": "E",
+      "availableSlots": 0,
+      "professors": [
+        "Joel Luis Carbonera",
+        "THIAGO LOPES TRUGILLO DA SILVEIRA"
+      ],
+      "scheduledTimes": [
+        {
+          "day": "Ter�a",
+          "startTime": "13:30",
+          "endTime": "15:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Quinta",
+          "startTime": "13:30",
+          "endTime": "15:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Sexta",
+          "startTime": "13:30",
+          "endTime": "15:10",
+          "location": "Laborat�rio de Ensino 101 - 43413 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d1885"
+        }
+      ]
+    },
+    {
+      "classIdentifier": "G",
+      "availableSlots": 14,
+      "professors": [
+        "Renan de Queiroz Maffei"
+      ],
+      "scheduledTimes": [
+        {
+          "day": "Ter�a",
+          "startTime": "15:30",
+          "endTime": "17:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Quinta",
+          "startTime": "15:30",
+          "endTime": "17:10",
+          "location": "SALA DE AULA 114 - PR�DIO 43425 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d44"
+        },
+        {
+          "day": "Sexta",
+          "startTime": "13:30",
+          "endTime": "15:10",
+          "location": "Laborat�rio de Ensino 102 - 43413 4",
+          "locationMap": "http://mapa.ufrgs.br/index.php?verb\u003dpan\u0026building\u003d1885"
+        }
+      ]
+    }
+  ],
+  "credits": 6
+}

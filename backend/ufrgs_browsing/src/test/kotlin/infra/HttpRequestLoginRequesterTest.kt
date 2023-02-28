@@ -26,7 +26,7 @@ class HttpRequestLoginRequesterTest {
         val login = Login("an user", "a password")
         val request = mock(HttpRequest::class.java)
         val httpResponse = aSuccessfulResponse()
-        `when`(httpRequestCreator.createRequest(login, signupEndpoint)).thenReturn(request)
+        `when`(httpRequestCreator.createLoginRequest(login, signupEndpoint)).thenReturn(request)
         `when`(httpClient.send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java)))
             .thenReturn(httpResponse)
 
@@ -40,7 +40,7 @@ class HttpRequestLoginRequesterTest {
     fun returnsConnectionErrorResponse() {
         val login = Login("an user", "a password")
         val request = mock(HttpRequest::class.java)
-        `when`(httpRequestCreator.createRequest(login, signupEndpoint)).thenReturn(request)
+        `when`(httpRequestCreator.createLoginRequest(login, signupEndpoint)).thenReturn(request)
         `when`(httpClient.send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java)))
             .thenThrow(IOException())
 
@@ -55,7 +55,7 @@ class HttpRequestLoginRequesterTest {
         val login = Login("an user", "a password")
         val request = mock(HttpRequest::class.java)
         val httpResponse = aWrongUsernameOrPasswordResponse()
-        `when`(httpRequestCreator.createRequest(login, signupEndpoint)).thenReturn(request)
+        `when`(httpRequestCreator.createLoginRequest(login, signupEndpoint)).thenReturn(request)
         `when`(httpClient.send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java)))
             .thenReturn(httpResponse)
 
@@ -70,7 +70,7 @@ class HttpRequestLoginRequesterTest {
         val login = Login("an user", "a password")
         val request = mock(HttpRequest::class.java)
         val httpResponse = aCaptchaResponse()
-        `when`(httpRequestCreator.createRequest(login, signupEndpoint)).thenReturn(request)
+        `when`(httpRequestCreator.createLoginRequest(login, signupEndpoint)).thenReturn(request)
         `when`(httpClient.send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java)))
             .thenReturn(httpResponse)
 
@@ -85,7 +85,7 @@ class HttpRequestLoginRequesterTest {
         val login = Login("an user", "a password")
         val request = mock(HttpRequest::class.java)
         val httpResponse = aMissingCookieResponse()
-        `when`(httpRequestCreator.createRequest(login, signupEndpoint)).thenReturn(request)
+        `when`(httpRequestCreator.createLoginRequest(login, signupEndpoint)).thenReturn(request)
         `when`(httpClient.send(ArgumentMatchers.eq(request), any(HttpResponse.BodyHandler::class.java)))
             .thenReturn(httpResponse)
 
@@ -100,6 +100,7 @@ class HttpRequestLoginRequesterTest {
 
         `when`(httpResponse.body()).thenReturn("")
         `when`(httpResponse.headers()).thenReturn(HttpHeaders.of(mapOf("set-cookie" to listOf("a value")), TestFiler()))
+        `when`(httpResponse.statusCode()).thenReturn(200)
 
         return httpResponse as HttpResponse<String>
     }
@@ -109,6 +110,7 @@ class HttpRequestLoginRequesterTest {
 
         `when`(httpResponse.body()).thenReturn("<body>(...) Usuário ou senha inválida (...)</body>")
         `when`(httpResponse.headers()).thenReturn(HttpHeaders.of(mapOf(), TestFiler()))
+        `when`(httpResponse.statusCode()).thenReturn(200)
 
         return httpResponse as HttpResponse<String>
     }
@@ -118,6 +120,7 @@ class HttpRequestLoginRequesterTest {
 
         `when`(httpResponse.body()).thenReturn("<body>(...) falhas de logins excedido (...)</body>")
         `when`(httpResponse.headers()).thenReturn(HttpHeaders.of(mapOf(), TestFiler()))
+        `when`(httpResponse.statusCode()).thenReturn(200)
 
         return httpResponse as HttpResponse<String>
     }
@@ -127,6 +130,7 @@ class HttpRequestLoginRequesterTest {
 
         `when`(httpResponse.body()).thenReturn("success body")
         `when`(httpResponse.headers()).thenReturn(HttpHeaders.of(mapOf(), TestFiler()))
+        `when`(httpResponse.statusCode()).thenReturn(200)
 
         return httpResponse as HttpResponse<String>
     }
