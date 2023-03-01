@@ -24,7 +24,7 @@ class UfrgsServiceTest {
     @Test
     fun orchestratesEnrollmentPossibilities() {
         val cookie = Cookie("123")
-        val possibilities = listOf(ClassCode("1", "2", "3", "4"), ClassCode("5", "6", "7", "8"))
+        val possibilities = listOf(ClassCode("Class1", "1", "2", "3", "4"), ClassCode("Class2", "5", "6", "7", "8"))
         val expected = listOf(
             CollegeClass(
                 listOf(

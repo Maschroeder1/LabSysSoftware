@@ -12,7 +12,10 @@ class JsoupUfrgsPageParserTest {
     @Test
     fun parsesPossibilitiesPage() {
         val possibilitiesPage = getPossibilitiesHtml()
-        val expected = listOf(ClassCode("3671", "36", "95", "2022022"), ClassCode("19994", "36", "95", "2022022"))
+        val expected = listOf(
+            ClassCode("ARQUITETURAS AVAN�ADAS DE COMPUTADORES - (INF01191)", "3671", "36", "95", "2022022"),
+            ClassCode("BIOLOGIA COMPUTACIONAL - (INF05018)", "19994", "36", "95", "2022022")
+        )
 
         val actual = parser.parsePossibilities(possibilitiesPage)
 

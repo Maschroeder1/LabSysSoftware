@@ -16,7 +16,7 @@ class HttpRequestCollegeClassRequesterTest {
 
     @Test
     fun requestsClass() {
-        val classes = listOf(ClassCode("a1", "h1", "c1", "s1"))
+        val classes = listOf(ClassCode("Class1", "a1", "h1", "c1", "s1"))
         val request = mock(HttpRequest::class.java)
         val response = mock(HttpResponse::class.java)
         val expected = CollegeClass(listOf(), 5)
