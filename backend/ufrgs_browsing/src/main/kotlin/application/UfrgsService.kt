@@ -12,8 +12,12 @@ class UfrgsService(
         return loginRequester.requestLogin(credentials)
     }
 
-    fun requestEnrollmentPossibilities(cookie: Cookie): List<CollegeClass> {
+    fun startPossibilitiesProcessing(cookie: Cookie): Int {
         val possibilities = possibilitiesRequester.requestPossibilities(cookie)
         return collegeClassRequester.bulkRequest(possibilities)
+    }
+
+    fun retrieveCurrentPossibilities(key: Int): Map<String, CollegeClass?> {
+        return collegeClassRequester.bulkQuery(key)
     }
 }

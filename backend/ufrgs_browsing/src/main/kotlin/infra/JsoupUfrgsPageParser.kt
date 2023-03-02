@@ -32,7 +32,7 @@ class JsoupUfrgsPageParser : UfrgsPageParser {
         return ClassCode(elem.text(), aux2[0], aux2[1], aux2[2], aux2[3])
     }
 
-    override fun parseClasses(html: String): CollegeClass {
+    override fun parseClass(html: String): CollegeClass {
         val doc = Jsoup.parse(html)
 
         return CollegeClass(getTimeslots(doc), getCreditCount(doc))

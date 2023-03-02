@@ -21,8 +21,9 @@ val ufrgsPageParser = JsoupUfrgsPageParser()
 val loginRequester: LoginRequester = HttpRequestLoginRequester(httpClient, httpRequestCreator)
 val possibilitiesRequester: PossibilitiesRequester =
     HttpRequestPossibilitiesRequester(httpClient, httpRequestCreator, ufrgsPageParser)
+val collegeClassController = CollegeClassController()
 val collegeClassRequester: CollegeClassRequester =
-    HttpRequestCollegeClassRequester(httpClient, httpRequestCreator, ufrgsPageParser)
+    AsyncHttpRequestCollegeClassRequester(httpClient, httpRequestCreator, ufrgsPageParser, collegeClassController)
 val ufrgsService = UfrgsService(loginRequester, possibilitiesRequester, collegeClassRequester)
 
 fun main(args: Array<String>) {
@@ -68,15 +69,36 @@ class Endpoints {
         return ResponseEntity<ApiResponse>(ApiResponse("", loginResponse.cookie), headers, HttpStatus.OK)
     }
 
-    @GetMapping("/classes")
-    fun classesEndpoint(@RequestHeader Cookie: String?): ResponseEntity<ApiResponse> {
+    @PostMapping("/classes")
+    fun postClassesEndpoint(@RequestHeader Cookie: String?): ResponseEntity<ApiResponse> {
         if (Cookie.isNullOrEmpty()) {
             return ResponseEntity.status(401).body(ApiResponse("Missing cookie", null))
         }
 
         return try {
-            val classes = ufrgsService.requestEnrollmentPossibilities(cookieFrom(Cookie))
-            ResponseEntity.ok(ApiResponse("Ok", classes))
+            val code = ufrgsService.startPossibilitiesProcessing(cookieFrom(Cookie))
+            ResponseEntity.ok(ApiResponse("Ok", code))
+        } catch (e: NoPossibilitiesException) {
+            ResponseEntity.status(400).body(ApiResponse("No available classes", emptyList<ClassCode>()))
+        } catch (e: OutdatedCookieException) {
+            ResponseEntity.status(401).body(ApiResponse("Outdated cookie", null))
+        } catch (e: CouldNotParseException) {
+            ResponseEntity.status(501).body(ApiResponse("Error parsing UFRGS response", e.message))
+        } catch (e: CouldNotGetUfrgsPageException) {
+            ResponseEntity.status(502).body(ApiResponse("Error contacting UFRGS", e.message))
+        } catch (e: Exception) {
+            ResponseEntity.status(500).body(ApiResponse("Internal server error", null))
+        }
+    }
+
+    @GetMapping("/classes/{key}")
+    fun getClassesEndpoint(@PathVariable key: String): ResponseEntity<ApiResponse> {
+        val intKey =
+            key.toIntOrNull() ?: return ResponseEntity.status(401).body(ApiResponse("Missing or invalid key", null))
+
+        return try {
+            val code = ufrgsService.retrieveCurrentPossibilities(intKey)
+            ResponseEntity.ok(ApiResponse("Ok", code))
         } catch (e: NoPossibilitiesException) {
             ResponseEntity.status(400).body(ApiResponse("No available classes", emptyList<ClassCode>()))
         } catch (e: OutdatedCookieException) {

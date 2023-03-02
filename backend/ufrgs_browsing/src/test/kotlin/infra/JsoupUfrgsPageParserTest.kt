@@ -26,7 +26,7 @@ class JsoupUfrgsPageParserTest {
     fun parsesClassPageWithMultiplePossibilities() {
         val classPage = getMultiplePossibilitiesClassHtml()
 
-        val actual = parser.parseClasses(classPage)
+        val actual = parser.parseClass(classPage)
 
         assertEquals(getMultiplePossibilitiesClassExpected(), actual)
     }
@@ -35,7 +35,7 @@ class JsoupUfrgsPageParserTest {
     fun parsesClassPageWithRemoteClassOption() {
         val classPage = getClassHtmlRemoteClass()
 
-        val actual = parser.parseClasses(classPage)
+        val actual = parser.parseClass(classPage)
 
         assertEquals(getRemoteClassExpected(), actual)
     }
