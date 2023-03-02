@@ -18,8 +18,8 @@ class AsyncHttpRequestCollegeClassRequester(
         return controller.getCollegeClasses(key)
     }
 
-    fun updateController() {
-        val code = controller.getClassToProcess() ?: return
+    fun updateController(): Boolean {
+        val code = controller.getClassToProcess() ?: return false
 
         try {
             val request = creator.createGetRequest(toClassUri(code))
@@ -29,6 +29,8 @@ class AsyncHttpRequestCollegeClassRequester(
         } catch (e: Exception) {
             controller.queueClassesToProcess(listOf(code))
         }
+
+        return true
     }
 
     private fun toClassUri(code: ClassCode): String {

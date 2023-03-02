@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import kotlinx.coroutines.*
 import java.net.http.HttpClient
 
 @SpringBootApplication
@@ -22,12 +23,26 @@ val loginRequester: LoginRequester = HttpRequestLoginRequester(httpClient, httpR
 val possibilitiesRequester: PossibilitiesRequester =
     HttpRequestPossibilitiesRequester(httpClient, httpRequestCreator, ufrgsPageParser)
 val collegeClassController = CollegeClassController()
-val collegeClassRequester: CollegeClassRequester =
+val collegeClassRequester: AsyncHttpRequestCollegeClassRequester =
     AsyncHttpRequestCollegeClassRequester(httpClient, httpRequestCreator, ufrgsPageParser, collegeClassController)
 val ufrgsService = UfrgsService(loginRequester, possibilitiesRequester, collegeClassRequester)
 
-fun main(args: Array<String>) {
+suspend fun main(args: Array<String>) {
     runApplication<Main>(*args)
+    keepCachePopulated()
+}
+
+private suspend fun keepCachePopulated() {
+    var updatedCache: Boolean
+    while (true) {
+        updatedCache = collegeClassRequester.updateController()
+
+        if (!updatedCache) {
+            delay(10_000)
+        } else {
+            delay(100)
+        }
+    }
 }
 
 @RestController
