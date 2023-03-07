@@ -25,13 +25,14 @@ class JsoupUfrgsPageParser : UfrgsPageParser {
     }
 
     private fun toClassCode(elements: Elements): ClassCode {
-        val aux = elements[0].getElementsByAttribute("href").first()!!.attr("href")
+        val elem = elements[0].getElementsByAttribute("href").first()!!
+        val aux = elem.attr("href")
         val aux2 = aux.substring(aux.indexOf("(")+1, aux.indexOf(")")).split(",").map { a -> a.trim() }
 
-        return ClassCode(aux2[0], aux2[1], aux2[2], aux2[3])
+        return ClassCode(elem.text(), aux2[0], aux2[1], aux2[2], aux2[3])
     }
 
-    override fun parseClasses(html: String): CollegeClass {
+    override fun parseClass(html: String): CollegeClass {
         val doc = Jsoup.parse(html)
 
         return CollegeClass(getTimeslots(doc), getCreditCount(doc))

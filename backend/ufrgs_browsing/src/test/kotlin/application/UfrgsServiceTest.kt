@@ -22,24 +22,23 @@ class UfrgsServiceTest {
     }
 
     @Test
-    fun orchestratesEnrollmentPossibilities() {
+    fun returnsKeyForUserRequest() {
         val cookie = Cookie("123")
-        val possibilities = listOf(ClassCode("1", "2", "3", "4"), ClassCode("5", "6", "7", "8"))
-        val expected = listOf(
-            CollegeClass(
-                listOf(
-                    Timeslot(
-                        "CLASS1",
-                        4,
-                        listOf("Prof1"), listOf(ScheduleTime("MON", "8:30", "10:10", "EAD", null))
-                    )
-                ), 2
-            )
-        )
+        val possibilities = listOf(ClassCode("Class1", "1", "2", "3", "4"), ClassCode("Class2", "5", "6", "7", "8"))
         `when`(possibilitiesRequester.requestPossibilities(cookie)).thenReturn(possibilities)
-        `when`(collegeClassRequester.bulkRequest(possibilities)).thenReturn(expected)
+        `when`(collegeClassRequester.bulkRequest(possibilities)).thenReturn(123)
 
-        val actual = service.requestEnrollmentPossibilities(cookie)
+        val actual = service.startPossibilitiesProcessing(cookie)
+
+        assertEquals(123, actual)
+    }
+
+    @Test
+    fun returnsPossibilitiesForKey() {
+        val expected = mapOf("c1" to CollegeClass(emptyList(), 1), "c2" to null)
+        `when`(collegeClassRequester.bulkQuery(123)).thenReturn(expected)
+
+        val actual = service.retrieveCurrentPossibilities(123)
 
         assertEquals(expected, actual)
     }
