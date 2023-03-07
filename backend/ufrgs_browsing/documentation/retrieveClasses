@@ -1,0 +1,286 @@
+{
+    "message": "Ok",
+    "content": {
+        "ARQUITETURAS AVANÇADAS DE COMPUTADORES - (INF01191)": {
+            "timeslots": [
+                {
+                    "classIdentifier": "U",
+                    "availableSlots": 10,
+                    "professors": [
+                        "ANTONIO CARLOS SCHNEIDER BECK FILHO"
+                    ],
+                    "scheduledTimes": [
+                        {
+                            "day": "Segunda",
+                            "startTime": "08:30",
+                            "endTime": "10:10",
+                            "location": "SALA DE AULA 104 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        },
+                        {
+                            "day": "Quarta",
+                            "startTime": "08:30",
+                            "endTime": "10:10",
+                            "location": "SALA DE AULA 104 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        }
+                    ]
+                }
+            ],
+            "credits": 4
+        },
+        "BIOLOGIA COMPUTACIONAL - (INF05018)": {
+            "timeslots": [
+                {
+                    "classIdentifier": "U",
+                    "availableSlots": 20,
+                    "professors": [
+                        "MARCIO DORN"
+                    ],
+                    "scheduledTimes": [
+                        {
+                            "day": "Terça",
+                            "startTime": "13:30",
+                            "endTime": "15:10",
+                            "location": "",
+                            "locationMap": null
+                        },
+                        {
+                            "day": "Quinta",
+                            "startTime": "13:30",
+                            "endTime": "15:10",
+                            "location": "",
+                            "locationMap": null
+                        }
+                    ]
+                }
+            ],
+            "credits": 4
+        },
+        "COMPUTADOR E SOCIEDADE - (INF01140)": {
+            "timeslots": [
+                {
+                    "classIdentifier": "U",
+                    "availableSlots": 30,
+                    "professors": [
+                        "DANTE AUGUSTO COUTO BARONE"
+                    ],
+                    "scheduledTimes": [
+                        {
+                            "day": "Quarta",
+                            "startTime": "08:30",
+                            "endTime": "11:50",
+                            "location": "SALA DE AULA 112 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        }
+                    ]
+                }
+            ],
+            "credits": 4
+        },
+        "CONCEPÇÃO DE CIRCUITOS INTEGRADOS I - (INF01185)": {
+            "timeslots": [
+                {
+                    "classIdentifier": "U",
+                    "availableSlots": 5,
+                    "professors": [
+                        "SERGIO BAMPI"
+                    ],
+                    "scheduledTimes": [
+                        {
+                            "day": "Terça",
+                            "startTime": "15:30",
+                            "endTime": "17:10",
+                            "location": "SALA DE AULA 111 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        },
+                        {
+                            "day": "Quinta",
+                            "startTime": "15:30",
+                            "endTime": "17:10",
+                            "location": "SALA DE AULA 111 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        }
+                    ]
+                }
+            ],
+            "credits": 4
+        },
+        "ESPECIFICAÇÃO FORMAL N - (INF01001)": {
+            "timeslots": [
+                {
+                    "classIdentifier": "U",
+                    "availableSlots": 20,
+                    "professors": [
+                        "DALTRO JOSE NUNES"
+                    ],
+                    "scheduledTimes": [
+                        {
+                            "day": "Quarta",
+                            "startTime": "13:30",
+                            "endTime": "15:10",
+                            "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        },
+                        {
+                            "day": "Sexta",
+                            "startTime": "13:30",
+                            "endTime": "15:10",
+                            "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        }
+                    ]
+                }
+            ],
+            "credits": 4
+        },
+        "FUNDAMENTOS DE VISÃO COMPUTACIONAL - (INF01030)": {
+            "timeslots": [
+                {
+                    "classIdentifier": "U",
+                    "availableSlots": 30,
+                    "professors": [
+                        "CLAUDIO ROSITO JUNG"
+                    ],
+                    "scheduledTimes": [
+                        {
+                            "day": "Segunda",
+                            "startTime": "08:30",
+                            "endTime": "10:10",
+                            "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        },
+                        {
+                            "day": "Quarta",
+                            "startTime": "08:30",
+                            "endTime": "10:10",
+                            "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        }
+                    ]
+                }
+            ],
+            "credits": 4
+        },
+        "GERÊNCIA E APLICAÇÕES EM REDES - (INF01015)": {
+            "timeslots": [
+                {
+                    "classIdentifier": "U",
+                    "availableSlots": 10,
+                    "professors": [
+                        "Jeferson Campos Nobre"
+                    ],
+                    "scheduledTimes": [
+                        {
+                            "day": "Terça",
+                            "startTime": "15:30",
+                            "endTime": "17:10",
+                            "location": "SALA DE AULA 109 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        },
+                        {
+                            "day": "Quinta",
+                            "startTime": "15:30",
+                            "endTime": "17:10",
+                            "location": "SALA DE AULA 109 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        }
+                    ]
+                }
+            ],
+            "credits": 4
+        },
+        "MODELAGEM E GERENCIAMENTO DE PROCESSOS DE NEGÓCIO - (INF01216)": {
+            "timeslots": [
+                {
+                    "classIdentifier": "U",
+                    "availableSlots": 30,
+                    "professors": [
+                        "LUCINÉIA HELOISA THOM"
+                    ],
+                    "scheduledTimes": [
+                        {
+                            "day": "Terça",
+                            "startTime": "13:30",
+                            "endTime": "15:10",
+                            "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        },
+                        {
+                            "day": "Quinta",
+                            "startTime": "13:30",
+                            "endTime": "15:10",
+                            "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        }
+                    ]
+                }
+            ],
+            "credits": 4
+        },
+        "PROJETO DE BANCO DE DADOS - (INF01006)": {
+            "timeslots": [
+                {
+                    "classIdentifier": "U",
+                    "availableSlots": 30,
+                    "professors": [
+                        "RENATA DE MATOS GALANTE"
+                    ],
+                    "scheduledTimes": [
+                        {
+                            "day": "Segunda",
+                            "startTime": "15:30",
+                            "endTime": "17:10",
+                            "location": "",
+                            "locationMap": null
+                        },
+                        {
+                            "day": "Quarta",
+                            "startTime": "15:30",
+                            "endTime": "17:10",
+                            "location": "",
+                            "locationMap": null
+                        }
+                    ]
+                }
+            ],
+            "credits": 4
+        },
+        "PROJETO EM COMPUTAÇÃO GRÁFICA - (INF01019)": {
+            "timeslots": [
+                {
+                    "classIdentifier": "U",
+                    "availableSlots": 30,
+                    "professors": [
+                        "LUCIANA PORCHER NEDEL"
+                    ],
+                    "scheduledTimes": [
+                        {
+                            "day": "Sexta",
+                            "startTime": "08:30",
+                            "endTime": "11:50",
+                            "location": "Laboratório de Ensino 104 - 43413 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=1885"
+                        }
+                    ]
+                }
+            ],
+            "credits": 4
+        },
+        "APRENDIZADO DE MÁQUINA - (INF01017)": null,
+        "SISTEMAS DIGITAIS PARA COMPUTADORES A - (INF01175)": null,
+        "SISTEMAS ESPECIALISTAS N - (INF01038)": null,
+        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO I - (INF01179)": null,
+        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO IX - (INF05009)": null,
+        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XII - (INF01063)": null,
+        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XV - (INF05013)": null,
+        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XXIV - (INF01068)": null,
+        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XXXIV - (INF01219)": null,
+        "TÓPICOS ESPECIAIS EM ENGENHARIA DE COMPUTAÇÃO IV - (INF01053)": null,
+        "COMUNICAÇÃO DE DADOS - (INF01005)": null,
+        "ECONOMIA A - (ECO02254)": null,
+        "PROGRAMAÇÃO DISTRIBUÍDA E PARALELA - (INF01008)": null,
+        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XXVI - (INF05021)": null,
+        "TÓPICOS ESPECIAIS EM ENGENHARIA DE COMPUTAÇÃO I - (INF01050)": null
+    }
+}
