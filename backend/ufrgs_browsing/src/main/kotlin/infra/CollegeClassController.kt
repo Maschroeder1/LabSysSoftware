@@ -2,6 +2,7 @@ package infra
 
 import model.ClassCode
 import model.CollegeClass
+import model.KeyNotRegisteredException
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -18,9 +19,13 @@ open class CollegeClassController {
     }
 
     open fun getCollegeClasses(key: Int): Map<String, CollegeClass?> {
-        val classNames = userRequestClassName.getOrDefault(key, emptyList())
+        if (!userRequestClassName.containsKey(key)) {
+            throw KeyNotRegisteredException()
+        }
+        val classNames = userRequestClassName[key]!!
 
-        return classNames.associateBy({ name -> name }, { name -> collegeClassCache.getOrDefault(name, null)})
+        return classNames.associateBy(
+            { name -> name }, { name -> collegeClassCache.getOrDefault(name, null)})
     }
 
     open fun getClassToProcess(): ClassCode? {
