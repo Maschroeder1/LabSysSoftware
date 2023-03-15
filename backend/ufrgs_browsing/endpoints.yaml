@@ -242,6 +242,9 @@ components:
         credits:
           type: number
           example: 4
+        classPlan:
+          type: string
+          example: http://www1.ufrgs.br/link/to/class/plan.pdf
     Timeslot:
       type: object
       properties:

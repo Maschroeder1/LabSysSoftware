@@ -27,7 +27,8 @@
                     ]
                 }
             ],
-            "credits": 4
+            "credits": 4,
+            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=3671_2019012"
         },
         "BIOLOGIA COMPUTACIONAL - (INF05018)": {
             "timeslots": [
@@ -55,7 +56,8 @@
                     ]
                 }
             ],
-            "credits": 4
+            "credits": 4,
+            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=19994_2019022"
         },
         "COMPUTADOR E SOCIEDADE - (INF01140)": {
             "timeslots": [
@@ -76,7 +78,8 @@
                     ]
                 }
             ],
-            "credits": 4
+            "credits": 4,
+            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=3642_2019022"
         },
         "CONCEPÇÃO DE CIRCUITOS INTEGRADOS I - (INF01185)": {
             "timeslots": [
@@ -104,7 +107,8 @@
                     ]
                 }
             ],
-            "credits": 4
+            "credits": 4,
+            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=3666_2015022"
         },
         "ESPECIFICAÇÃO FORMAL N - (INF01001)": {
             "timeslots": [
@@ -132,7 +136,8 @@
                     ]
                 }
             ],
-            "credits": 4
+            "credits": 4,
+            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=7942_2022012"
         },
         "FUNDAMENTOS DE VISÃO COMPUTACIONAL - (INF01030)": {
             "timeslots": [
@@ -160,7 +165,8 @@
                     ]
                 }
             ],
-            "credits": 4
+            "credits": 4,
+            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=24387_2015022"
         },
         "GERÊNCIA E APLICAÇÕES EM REDES - (INF01015)": {
             "timeslots": [
@@ -188,7 +194,8 @@
                     ]
                 }
             ],
-            "credits": 4
+            "credits": 4,
+            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=7956_2010022"
         },
         "MODELAGEM E GERENCIAMENTO DE PROCESSOS DE NEGÓCIO - (INF01216)": {
             "timeslots": [
@@ -216,7 +223,8 @@
                     ]
                 }
             ],
-            "credits": 4
+            "credits": 4,
+            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=29416_2017012"
         },
         "PROJETO DE BANCO DE DADOS - (INF01006)": {
             "timeslots": [
@@ -244,7 +252,8 @@
                     ]
                 }
             ],
-            "credits": 4
+            "credits": 4,
+            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=7947_2020012"
         },
         "PROJETO EM COMPUTAÇÃO GRÁFICA - (INF01019)": {
             "timeslots": [
@@ -265,7 +274,8 @@
                     ]
                 }
             ],
-            "credits": 4
+            "credits": 4,
+            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=7960_2015022"
         },
         "APRENDIZADO DE MÁQUINA - (INF01017)": null,
         "SISTEMAS DIGITAIS PARA COMPUTADORES A - (INF01175)": null,
