@@ -15,7 +15,9 @@ class AsyncHttpRequestCollegeClassRequesterTest {
 
     @Test
     fun bulkSavesCodesToController() {
-        val classCodes = listOf(ClassCode("c1", "a1", "h1", "c1", "s1"), ClassCode("c2", "a2", "h2", "c2", "s2"))
+        val classCodes = listOf(
+            ClassCode("c1", "a1", "h1", "c1", "s1", null),
+            ClassCode("c2", "a2", "h2", "c2", "s2", "classPlan"))
 
         `when`(controller.queueClassesToProcess(classCodes)).thenReturn(123)
 
@@ -42,7 +44,7 @@ class AsyncHttpRequestCollegeClassRequesterTest {
             .thenReturn(response)
         `when`(response.body()).thenReturn("any html")
         `when`(parser.parseClass("any html")).thenReturn(expected)
-        `when`(controller.getClassToProcess()).thenReturn(ClassCode("c1", "a1", "h1", "c1", "s1"))
+        `when`(controller.getClassToProcess()).thenReturn(ClassCode("c1", "a1", "h1", "c1", "s1", null))
 
         requester.updateController()
 

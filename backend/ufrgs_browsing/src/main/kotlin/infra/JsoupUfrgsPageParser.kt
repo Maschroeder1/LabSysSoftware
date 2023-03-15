@@ -16,20 +16,45 @@ class JsoupUfrgsPageParser : UfrgsPageParser {
     private fun getClassCodesFromClass(doc: Element, className: String): List<ClassCode> {
         return doc.getElementsByClass(className)
             .filter{ key -> isOfferedThisSemester(key.getElementsByAttributeValue("align", "left").first())}
-            .map { key -> toClassCode(key.getElementsByAttributeValue("align", "left")) }
+            .map { key -> toClassCode(key) }
     }
+
     private fun isOfferedThisSemester(element: Element?): Boolean {
         return element != null &&
                 element.getElementsByAttributeValue("title", "Esta atividade possui turmas oferecidas neste semestre.")
                     .isNotEmpty()
     }
 
-    private fun toClassCode(elements: Elements): ClassCode {
+    private fun toClassCode(key: Element): ClassCode {
+        return toClassCode(
+            key.getElementsByAttributeValue("align", "left"),
+            getClassPlan(key.getElementsByAttributeValue("align", "center")))
+    }
+
+    private fun getClassPlan(elements: Elements): String? {
+        val elem = elements.first() ?: return null
+
+        var href = elem.getElementsByAttribute("href").attr("href")
+
+        return if (href.isNotEmpty()) {
+            if (!href.startsWith("www")) {
+                href = "www1.ufrgs.br$href"
+            }
+            if (!href.startsWith("http")) {
+                href = "http://$href"
+            }
+            href
+        } else {
+            null
+        }
+    }
+
+    private fun toClassCode(elements: Elements, classPlan: String?): ClassCode {
         val elem = elements[0].getElementsByAttribute("href").first()!!
         val aux = elem.attr("href")
         val aux2 = aux.substring(aux.indexOf("(")+1, aux.indexOf(")")).split(",").map { a -> a.trim() }
 
-        return ClassCode(elem.text(), aux2[0], aux2[1], aux2[2], aux2[3])
+        return ClassCode(elem.text(), aux2[0], aux2[1], aux2[2], aux2[3], classPlan)
     }
 
     override fun parseClass(html: String): CollegeClass {

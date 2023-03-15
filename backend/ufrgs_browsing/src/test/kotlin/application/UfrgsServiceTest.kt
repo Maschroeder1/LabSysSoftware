@@ -24,7 +24,9 @@ class UfrgsServiceTest {
     @Test
     fun returnsKeyForUserRequest() {
         val cookie = Cookie("123")
-        val possibilities = listOf(ClassCode("Class1", "1", "2", "3", "4"), ClassCode("Class2", "5", "6", "7", "8"))
+        val possibilities = listOf(
+            ClassCode("Class1", "1", "2", "3", "4", "classPlan1"),
+            ClassCode("Class2", "5", "6", "7", "8", null))
         `when`(possibilitiesRequester.requestPossibilities(cookie)).thenReturn(possibilities)
         `when`(collegeClassRequester.bulkRequest(possibilities)).thenReturn(123)
 
