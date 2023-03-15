@@ -60,7 +60,7 @@ class JsoupUfrgsPageParser : UfrgsPageParser {
     override fun parseClass(html: String): CollegeClass {
         val doc = Jsoup.parse(html)
 
-        return CollegeClass(getTimeslots(doc), getCreditCount(doc))
+        return CollegeClass(getTimeslots(doc), getCreditCount(doc), null)
     }
 
     private fun getTimeslots(doc: Document): List<Timeslot> {

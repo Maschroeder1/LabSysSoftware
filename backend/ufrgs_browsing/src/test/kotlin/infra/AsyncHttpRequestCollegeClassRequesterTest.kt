@@ -26,7 +26,7 @@ class AsyncHttpRequestCollegeClassRequesterTest {
 
     @Test
     fun bulkQueries() {
-        val expected = mapOf("c1" to CollegeClass(emptyList(), 456), "c2" to null)
+        val expected = mapOf("c1" to CollegeClass(emptyList(), 456, null), "c2" to null)
         `when`(controller.getCollegeClasses(123)).thenReturn(expected)
 
         val actual = requester.bulkQuery(123)
@@ -38,13 +38,13 @@ class AsyncHttpRequestCollegeClassRequesterTest {
     fun sendsRequestToUpdateController() {
         val request = mock(HttpRequest::class.java)
         val response = mock(HttpResponse::class.java)
-        val expected = CollegeClass(listOf(), 5)
+        val expected = CollegeClass(listOf(), 5, "some class plan")
         `when`(creator.createGetRequest(endpoint1)).thenReturn(request)
         `when`(client.send(ArgumentMatchers.eq(request), Mockito.any(HttpResponse.BodyHandler::class.java)))
             .thenReturn(response)
         `when`(response.body()).thenReturn("any html")
         `when`(parser.parseClass("any html")).thenReturn(expected)
-        `when`(controller.getClassToProcess()).thenReturn(ClassCode("c1", "a1", "h1", "c1", "s1", null))
+        `when`(controller.getClassToProcess()).thenReturn(ClassCode("c1", "a1", "h1", "c1", "s1", "some class plan"))
 
         requester.updateController()
 

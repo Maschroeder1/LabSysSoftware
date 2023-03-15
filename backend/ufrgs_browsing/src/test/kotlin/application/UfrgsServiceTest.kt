@@ -37,7 +37,7 @@ class UfrgsServiceTest {
 
     @Test
     fun returnsPossibilitiesForKey() {
-        val expected = mapOf("c1" to CollegeClass(emptyList(), 1), "c2" to null)
+        val expected = mapOf("c1" to CollegeClass(emptyList(), 1, null), "c2" to null)
         `when`(collegeClassRequester.bulkQuery(123)).thenReturn(expected)
 
         val actual = service.retrieveCurrentPossibilities(123)

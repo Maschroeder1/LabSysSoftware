@@ -11,7 +11,7 @@ class CollegeClassControllerTest {
     private var controller = CollegeClassController()
     private val aClassCode = ClassCode("c1", "a1", "h1", "c1", "s1", "classPlan")
     private val anotherClassCode = ClassCode("c2", "a2", "h2", "c2", "s2", null)
-    private val aCollegeClass = CollegeClass(emptyList(), 123)
+    private val aCollegeClass = CollegeClass(emptyList(), 123, "classPlan")
 
     @BeforeEach
     fun setup() {
