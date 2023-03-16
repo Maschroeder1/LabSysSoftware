@@ -719,21 +719,6 @@
     }
   }
 };
-            defs["ClassesFailureResponse"] = {
-  "required" : [ "message" ],
-  "type" : "object",
-  "properties" : {
-    "message" : {
-      "type" : "string",
-      "description" : "Short message of what error ocurrred",
-      "example" : "Something something error message"
-    },
-    "content" : {
-      "type" : "object",
-      "description" : "Either null or potentially invalid cookie"
-    }
-  }
-};
             defs["ClassesSuccessResponse"] = {
   "type" : "object",
   "properties" : {
@@ -761,6 +746,10 @@
     "credits" : {
       "type" : "number",
       "example" : 4
+    },
+    "classPlan" : {
+      "type" : "string",
+      "example" : "http://www1.ufrgs.br/link/to/class/plan.pdf"
     }
   }
 };
@@ -799,6 +788,37 @@
       "type" : "string",
       "description" : "Copy of set-cookie header",
       "example" : "PHPSESSID=abc123; path=/"
+    }
+  }
+};
+            defs["EnrollmentDeclarationSuccessResponse"] = {
+  "type" : "object",
+  "properties" : {
+    "message" : {
+      "type" : "string",
+      "description" : "Not relevant",
+      "example" : "Ok"
+    },
+    "content" : {
+      "type" : "string",
+      "description" : "Link to enrollment declaration pdf",
+      "format" : "URL",
+      "example" : "www1.ufrgs.br/path/to/declaration.pdf"
+    }
+  }
+};
+            defs["FailureResponse"] = {
+  "required" : [ "message" ],
+  "type" : "object",
+  "properties" : {
+    "message" : {
+      "type" : "string",
+      "description" : "Short message of what error ocurrred",
+      "example" : "Something something error message"
+    },
+    "content" : {
+      "type" : "object",
+      "description" : "Either null or potentially invalid cookie"
     }
   }
 };
@@ -884,6 +904,9 @@
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="Default"><a href="#api-Default">API Methods - Default</a></li>
+                    <li data-group="Default" data-name="getEnrollmentdeclaration" class="">
+                      <a href="#api-Default-getEnrollmentdeclaration">getEnrollmentdeclaration</a>
+                    </li>
                     <li data-group="Default" data-name="login" class="">
                       <a href="#api-Default-login">login</a>
                     </li>
@@ -914,6 +937,567 @@
         <div id="sections">
                 <section id="api-Default">
                   <h1>Default</h1>
+                    <div id="api-Default-getEnrollmentdeclaration">
+                      <article id="api-Default-getEnrollmentdeclaration-0" data-group="User" data-name="getEnrollmentdeclaration" data-version="0">
+                        <div class="pull-left">
+                          <h1>getEnrollmentdeclaration</h1>
+                          <p>Gets pre-generated enrollment declaration</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Returns link to an enrollment declaration that was previously generated. Cannot generate new declarations</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/api/enrollmentdeclaration</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-getEnrollmentdeclaration-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-getEnrollmentdeclaration-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-getEnrollmentdeclaration-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-getEnrollmentdeclaration-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-getEnrollmentdeclaration-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-getEnrollmentdeclaration-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-getEnrollmentdeclaration-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-getEnrollmentdeclaration-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-getEnrollmentdeclaration-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-getEnrollmentdeclaration-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-getEnrollmentdeclaration-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-getEnrollmentdeclaration-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+\
+-H "Accept: application/json"\
+"https://virtserver.swaggerhub.com/MIKAELARNEZ/Lab_Sys_Sw/1.0.0/api/enrollmentdeclaration?"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-getEnrollmentdeclaration-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: cookieAuth
+        ApiKeyAuth cookieAuth = (ApiKeyAuth) defaultClient.getAuthentication("cookieAuth");
+        cookieAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //cookieAuth.setApiKeyPrefix("Token");
+
+        DefaultApi apiInstance = new DefaultApi();
+        try {
+            EnrollmentDeclarationSuccessResponse result = apiInstance.getEnrollmentdeclaration();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#getEnrollmentdeclaration");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-getEnrollmentdeclaration-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        try {
+            EnrollmentDeclarationSuccessResponse result = apiInstance.getEnrollmentdeclaration();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#getEnrollmentdeclaration");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-getEnrollmentdeclaration-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-getEnrollmentdeclaration-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: cookieAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"PHPSESSID"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"PHPSESSID"];
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// Gets pre-generated enrollment declaration
+[apiInstance getEnrollmentdeclarationWithCompletionHandler: 
+              ^(EnrollmentDeclarationSuccessResponse output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getEnrollmentdeclaration-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var LabSysSwApi = require('lab_sys_sw_api');
+var defaultClient = LabSysSwApi.ApiClient.instance;
+
+// Configure API key authorization: cookieAuth
+var cookieAuth = defaultClient.authentications['cookieAuth'];
+cookieAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//cookieAuth.apiKeyPrefix['PHPSESSID'] = "Token"
+
+var api = new LabSysSwApi.DefaultApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.getEnrollmentdeclaration(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-getEnrollmentdeclaration-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-getEnrollmentdeclaration-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getEnrollmentdeclarationExample
+    {
+        public void main()
+        {
+
+            // Configure API key authorization: cookieAuth
+            Configuration.Default.ApiKey.Add("PHPSESSID", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("PHPSESSID", "Bearer");
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Gets pre-generated enrollment declaration
+                EnrollmentDeclarationSuccessResponse result = apiInstance.getEnrollmentdeclaration();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.getEnrollmentdeclaration: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getEnrollmentdeclaration-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: cookieAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('PHPSESSID', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('PHPSESSID', 'Bearer');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+
+try {
+    $result = $api_instance->getEnrollmentdeclaration();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getEnrollmentdeclaration: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getEnrollmentdeclaration-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+# Configure API key authorization: cookieAuth
+$WWW::SwaggerClient::Configuration::api_key->{'PHPSESSID'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'PHPSESSID'} = "Bearer";
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+
+eval { 
+    my $result = $api_instance->getEnrollmentdeclaration();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->getEnrollmentdeclaration: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getEnrollmentdeclaration-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: cookieAuth
+swagger_client.configuration.api_key['PHPSESSID'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['PHPSESSID'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+
+try: 
+    # Gets pre-generated enrollment declaration
+    api_response = api_instance.get_enrollmentdeclaration()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->getEnrollmentdeclaration: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Succesfully parsed link from previously generated enrollment declaration </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getEnrollmentdeclaration-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getEnrollmentdeclaration-200-schema">
+                                  <div id='responses-getEnrollmentdeclaration-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Succesfully parsed link from previously generated enrollment declaration",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/EnrollmentDeclarationSuccessResponse"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getEnrollmentdeclaration-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getEnrollmentdeclaration-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getEnrollmentdeclaration-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - User does not have previously generated enrollment declaration </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getEnrollmentdeclaration-400-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getEnrollmentdeclaration-400-schema">
+                                  <div id='responses-getEnrollmentdeclaration-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "User does not have previously generated enrollment declaration",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/FailureResponse"
+      },
+      "example" : {
+        "message" : "No enrollment declaration previously generated"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getEnrollmentdeclaration-400-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getEnrollmentdeclaration-400-schema-400');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getEnrollmentdeclaration-400-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 401 - Cookie needs refreshing </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getEnrollmentdeclaration-401-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getEnrollmentdeclaration-401-schema">
+                                  <div id='responses-getEnrollmentdeclaration-401-schema-401' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Cookie needs refreshing",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/FailureResponse"
+      },
+      "example" : {
+        "message" : "Outdated cookie"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getEnrollmentdeclaration-401-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getEnrollmentdeclaration-401-schema-401');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getEnrollmentdeclaration-401-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Catch all error for other erros </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getEnrollmentdeclaration-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getEnrollmentdeclaration-500-schema">
+                                  <div id='responses-getEnrollmentdeclaration-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Catch all error for other erros",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/FailureResponse"
+      },
+      "example" : {
+        "message" : "Internal server error"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getEnrollmentdeclaration-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getEnrollmentdeclaration-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getEnrollmentdeclaration-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 501 - Unexpected html from UFRGS response </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getEnrollmentdeclaration-501-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getEnrollmentdeclaration-501-schema">
+                                  <div id='responses-getEnrollmentdeclaration-501-schema-501' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Unexpected html from UFRGS response",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/FailureResponse"
+      },
+      "example" : {
+        "message" : "Error parsing UFRGS response"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getEnrollmentdeclaration-501-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getEnrollmentdeclaration-501-schema-501');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getEnrollmentdeclaration-501-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 502 - Error in the UFRGS server connection </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getEnrollmentdeclaration-502-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getEnrollmentdeclaration-502-schema">
+                                  <div id='responses-getEnrollmentdeclaration-502-schema-502' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Error in the UFRGS server connection",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/FailureResponse"
+      },
+      "example" : {
+        "message" : "Error contacting UFRGS",
+        "content" : "Bad status 404"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getEnrollmentdeclaration-502-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getEnrollmentdeclaration-502-schema-502');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getEnrollmentdeclaration-502-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Default-login">
                       <article id="api-Default-login-0" data-group="User" data-name="login" data-version="0">
                         <div class="pull-left">
@@ -1765,7 +2349,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ClassesFailureResponse"
+        "$ref" : "#/components/schemas/FailureResponse"
       },
       "example" : {
         "message" : "Key was not previously created"
@@ -1816,7 +2400,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ClassesFailureResponse"
+        "$ref" : "#/components/schemas/FailureResponse"
       },
       "example" : {
         "message" : "Missing or invalid key"
@@ -1867,7 +2451,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ClassesFailureResponse"
+        "$ref" : "#/components/schemas/FailureResponse"
       },
       "example" : {
         "message" : "Internal server error"
@@ -2223,7 +2807,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ClassesFailureResponse"
+        "$ref" : "#/components/schemas/FailureResponse"
       },
       "example" : {
         "message" : "No available classes"
@@ -2274,7 +2858,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ClassesFailureResponse"
+        "$ref" : "#/components/schemas/FailureResponse"
       },
       "example" : {
         "message" : "Outdated cookie"
@@ -2325,7 +2909,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ClassesFailureResponse"
+        "$ref" : "#/components/schemas/FailureResponse"
       },
       "example" : {
         "message" : "Internal server error"
@@ -2357,7 +2941,7 @@ except ApiException as e:
                                 </div>
                             </div>
 
-                            <h3> Status: 501 - Error in the UFRGS server connection </h3>
+                            <h3> Status: 501 - Unexpected html from UFRGS response </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
@@ -2372,15 +2956,14 @@ except ApiException as e:
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "Error in the UFRGS server connection",
+  "description" : "Unexpected html from UFRGS response",
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ClassesFailureResponse"
+        "$ref" : "#/components/schemas/FailureResponse"
       },
       "example" : {
-        "message" : "Error contacting UFRGS",
-        "content" : "Bad status 404"
+        "message" : "Error parsing UFRGS response"
       }
     }
   }
@@ -2409,7 +2992,7 @@ except ApiException as e:
                                 </div>
                             </div>
 
-                            <h3> Status: 502 - Unexpected html from UFRGS response </h3>
+                            <h3> Status: 502 - Error in the UFRGS server connection </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
@@ -2424,14 +3007,15 @@ except ApiException as e:
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "Unexpected html from UFRGS response",
+  "description" : "Error in the UFRGS server connection",
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ClassesFailureResponse"
+        "$ref" : "#/components/schemas/FailureResponse"
       },
       "example" : {
-        "message" : "Error parsing UFRGS response"
+        "message" : "Error contacting UFRGS",
+        "content" : "Bad status 404"
       }
     }
   }

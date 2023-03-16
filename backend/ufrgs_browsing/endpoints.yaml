@@ -80,7 +80,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClassesFailureResponse'
+                $ref: '#/components/schemas/FailureResponse'
               example:
                 message: No available classes
         "401":
@@ -88,32 +88,32 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClassesFailureResponse'
+                $ref: '#/components/schemas/FailureResponse'
               example:
                 message: Outdated cookie
         "501":
-          description: Error in the UFRGS server connection
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClassesFailureResponse'
-              example:
-                message: Error contacting UFRGS
-                content: Bad status 404
-        "502":
           description: Unexpected html from UFRGS response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClassesFailureResponse'
+                $ref: '#/components/schemas/FailureResponse'
               example:
                 message: Error parsing UFRGS response
+        "502":
+          description: Error in the UFRGS server connection
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureResponse'
+              example:
+                message: Error contacting UFRGS
+                content: Bad status 404
         "500":
           description: Catch all error for other erros
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClassesFailureResponse'
+                $ref: '#/components/schemas/FailureResponse'
               example:
                 message: Internal server error
       security:
@@ -144,7 +144,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClassesFailureResponse'
+                $ref: '#/components/schemas/FailureResponse'
               example:
                 message: Key was not previously created
         "401":
@@ -152,7 +152,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClassesFailureResponse'
+                $ref: '#/components/schemas/FailureResponse'
               example:
                 message: Missing or invalid key
         "500":
@@ -160,9 +160,64 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClassesFailureResponse'
+                $ref: '#/components/schemas/FailureResponse'
               example:
                 message: Internal server error
+  /api/enrollmentdeclaration:
+    get:
+      summary: Gets pre-generated enrollment declaration
+      description: Returns link to an enrollment declaration that was previously generated. Cannot generate new declarations
+      operationId: getEnrollmentdeclaration
+      responses:
+        "200":
+          description: Succesfully parsed link from previously generated enrollment declaration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentDeclarationSuccessResponse'
+        "400":
+          description: User does not have previously generated enrollment declaration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureResponse'
+              example:
+                message: No enrollment declaration previously generated
+        "401":
+          description: Cookie needs refreshing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureResponse'
+              example:
+                message: Outdated cookie
+        "501":
+          description: Unexpected html from UFRGS response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureResponse'
+              example:
+                message: Error parsing UFRGS response
+        "502":
+          description: Error in the UFRGS server connection
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureResponse'
+              example:
+                message: Error contacting UFRGS
+                content: Bad status 404
+        "500":
+          description: Catch all error for other erros
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureResponse'
+              example:
+                message: Internal server error
+      security:
+      - cookieAuth: []
 components:
   schemas:
     Login:
@@ -209,7 +264,7 @@ components:
           type: number
           description: Code representing async request processing
           example: 123
-    ClassesFailureResponse:
+    FailureResponse:
       required:
       - message
       type: object
@@ -242,6 +297,9 @@ components:
         credits:
           type: number
           example: 4
+        classPlan:
+          type: string
+          example: http://www1.ufrgs.br/link/to/class/plan.pdf
     Timeslot:
       type: object
       properties:
@@ -280,6 +338,18 @@ components:
         locationMap:
           type: string
           format: url
+    EnrollmentDeclarationSuccessResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Not relevant
+          example: Ok
+        content:
+          type: string
+          description: Link to enrollment declaration pdf
+          format: URL
+          example: www1.ufrgs.br/path/to/declaration.pdf
     CookieSuccessResponse_content:
       type: object
       properties:

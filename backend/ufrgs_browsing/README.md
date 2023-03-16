@@ -62,3 +62,16 @@ Expected response:
 }
 ```
 Where a null value represents a class still being processed
+
+### GET /api/enrollmentdeclaration
+Expected request example:
+
+Empty body with PHPSESSID cookie
+
+Expected response:
+```
+{
+    "message": "Ok",
+    "content": "http://www.website.com/path/to/enrollment/certificate.pdf"
+}
+```
