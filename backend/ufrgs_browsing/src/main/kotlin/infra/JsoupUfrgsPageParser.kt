@@ -106,7 +106,7 @@ class JsoupUfrgsPageParser : UfrgsPageParser {
         return if (html.contains("Reimprimir o comprovante")) {
             getPreGeneratedPage(doc.getElementsByClass("moldura"))
         } else {
-            ""
+            throw JavascriptException()
         }
     }
 

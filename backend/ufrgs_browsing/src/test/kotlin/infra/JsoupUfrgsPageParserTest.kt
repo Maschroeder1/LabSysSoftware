@@ -2,8 +2,8 @@ package infra
 
 import com.google.gson.Gson
 import model.*
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
 import kotlin.test.fail
 
 class JsoupUfrgsPageParserTest {
@@ -41,13 +41,32 @@ class JsoupUfrgsPageParserTest {
     }
 
     @Test
-    fun parsesPreGeneratedEnrollmentPage() {
-        val preGeneratedEnrollmentPage = getHtml("/enrollment_generated.html")
+    fun parsesRecentPreGeneratedEnrollmentPage() {
+        val preGeneratedEnrollmentPage = getHtml("/enrollment_generated_new.html")
 
         val actual = parser.parseEnrollment(preGeneratedEnrollmentPage)
 
         assertEquals(
             "http://www1.ufrgs.br/PortalEnsino/GraduacaoAluno/public/exibeComprovantePDF.php?chave=123ABC", actual)
+    }
+
+    @Test
+    fun parsesOlderPreGeneratedEnrollmentPage() {
+        val preGeneratedEnrollmentPage = getHtml("/enrollment_generated_old.html")
+
+        val actual = parser.parseEnrollment(preGeneratedEnrollmentPage)
+
+        assertEquals(
+            "http://www1.ufrgs.br/PortalEnsino/GraduacaoAluno/public/exibeComprovantePDF.php?chave=123ABC", actual)
+    }
+
+    @Test
+    fun throwsIfNoEnrollmentWasGenerated() {
+        val preGeneratedEnrollmentPage = getHtml("/enrollment_not_generated.html")
+
+        assertThrows(JavascriptException::class.java) {
+            parser.parseEnrollment(preGeneratedEnrollmentPage)
+        }
     }
 
     private fun getHtml(source: String): String {

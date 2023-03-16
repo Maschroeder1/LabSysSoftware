@@ -133,6 +133,8 @@ class Endpoints {
         return try {
             val declarationLink = ufrgsService.retrieveEnrollmentDeclaration(cookieFrom(Cookie))
             ResponseEntity.ok(ApiResponse("Ok", declarationLink))
+        } catch (e: JavascriptException) {
+            ResponseEntity.status(400).body(ApiResponse("No enrollment declaration previously generated", null))
         } catch (e: OutdatedCookieException) {
             ResponseEntity.status(401).body(ApiResponse("Outdated cookie", null))
         } catch (e: CouldNotParseException) {
