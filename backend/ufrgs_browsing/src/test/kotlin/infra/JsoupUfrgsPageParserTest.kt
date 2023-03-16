@@ -11,7 +11,7 @@ class JsoupUfrgsPageParserTest {
 
     @Test
     fun parsesPossibilitiesPage() {
-        val possibilitiesPage = getPossibilitiesHtml()
+        val possibilitiesPage = getHtml("/possibilities.html")
         val expected = listOf(
             ClassCode("ARQUITETURAS AVAN�ADAS DE COMPUTADORES - (INF01191)", "3671", "36", "95", "2022022"),
             ClassCode("BIOLOGIA COMPUTACIONAL - (INF05018)", "19994", "36", "95", "2022022")
@@ -24,7 +24,7 @@ class JsoupUfrgsPageParserTest {
 
     @Test
     fun parsesClassPageWithMultiplePossibilities() {
-        val classPage = getMultiplePossibilitiesClassHtml()
+        val classPage = getHtml("/class_multiple.html")
 
         val actual = parser.parseClass(classPage)
 
@@ -33,23 +33,21 @@ class JsoupUfrgsPageParserTest {
 
     @Test
     fun parsesClassPageWithRemoteClassOption() {
-        val classPage = getClassHtmlRemoteClass()
+        val classPage = getHtml("/class_remote.html")
 
         val actual = parser.parseClass(classPage)
 
         assertEquals(getRemoteClassExpected(), actual)
     }
 
-    private fun getPossibilitiesHtml(): String {
-        return getHtml("/possibilities.html")
-    }
+    @Test
+    fun parsesPreGeneratedEnrollmentPage() {
+        val preGeneratedEnrollmentPage = getHtml("/enrollment_generated.html")
 
-    private fun getMultiplePossibilitiesClassHtml(): String {
-        return getHtml("/class_multiple.html")
-    }
+        val actual = parser.parseEnrollment(preGeneratedEnrollmentPage)
 
-    private fun getClassHtmlRemoteClass(): String {
-        return getHtml("/class_remote.html")
+        assertEquals(
+            "http://www1.ufrgs.br/PortalEnsino/GraduacaoAluno/public/exibeComprovantePDF.php?chave=123ABC", actual)
     }
 
     private fun getHtml(source: String): String {
