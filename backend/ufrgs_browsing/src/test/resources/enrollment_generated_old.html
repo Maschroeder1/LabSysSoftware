@@ -1,0 +1,212 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0068)https://www1.ufrgs.br/intranet/portal/public/index.php?cods=1,1,1,18 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+
+    <!-- CSS da Moldura -->
+    <link href="./files/form_ufrgs_novo.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="./files/form_ufrgs_print_novo.css" media="print" rel="stylesheet" type="text/css">
+
+    <!-- CSS dos Servi�os -->
+    <link href="./files/formulario.css" media="all" rel="stylesheet" type="text/css">
+    <link href="./files/simples.css" media="all" rel="stylesheet" type="text/css">
+    <link href="./files/tabela.css" media="all" rel="stylesheet" type="text/css">
+    <link href="./files/texto.css" media="all" rel="stylesheet" type="text/css">
+    <link href="./files/PORTAL_css.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./files/Portal_js.js"></script>
+    <link href="./files/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" language="javascript" src="./files/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" language="javascript" src="./files/jquery-ui-1.8.16.custom.min.js"></script>
+    <title>Comprovante de Matr�cula Autenticado - UFRGS</title>
+
+    <script language="javascript" type="text/javascript">
+		function movemenu(idgrupo)
+    {
+            var grupo=document.getElementById(idgrupo);
+            if(grupo.className=="grupo_expandido")
+                    grupo.className="grupo_contraido";
+            else
+                    grupo.className="grupo_expandido";
+
+            grupo.focus();
+    }
+
+    function trocaperfil(val)
+    {
+    	window.location=val;
+    }
+
+	function Ampliar(){
+
+		var grupo=document.getElementById("amp");
+		var grupo2=document.getElementById("tst");
+		var grupo3=document.getElementById("tst2");
+
+		if(grupo.innerHTML=="Abrir")
+		{
+			grupo.innerHTML="Fechar";
+			grupo2.media="screen";
+			grupo3.media="braile";
+
+		}
+		else
+		{
+			grupo.innerHTML="Abrir";
+			grupo2.media="braile";
+			grupo3.media="screen";
+		}
+
+	}
+
+	</script>
+</head>
+
+<body>
+
+<!--top-->
+<div id="top">
+
+    <div id="logo_ufrgs">
+        <span class="UFRGS">UFRGS</span>
+    </div>
+    <div id="abas">
+        <ul>
+            <li id="current"><a href="./" class="selecao">Aluno</a></li>
+        </ul>
+    </div>
+    <div id="identificacao">
+        <a href="./sair.php">Sair</a>
+        <span> |&nbsp;</span>
+        <span class="nomePessoa">NOME SOBRENOME </span>
+    </div>
+
+</div>
+<!--top-->
+
+
+
+<div id="sub_topo">
+    <div id="d_perfil">
+        <span>Gradua��o</span>
+    </div>
+</div>
+
+
+<div id="geral">
+    <div id="menu">
+
+
+        <div class="grupo_menu_selecionado">
+            <div id="m0" class="grupo_expandido">
+                <h3 class="menu_titulo_expandido"><a href="javascript:  movemenu('m0'); "
+                                                     class="grupo">Matr�cula</a></h3>
+                <ul class="menu">
+
+                    <li><a id="srv_1" href="?cods=1,1,1,324" title="">Avalia��o de Disciplinas</a></li>
+                    <li><a id="srv_2" href="?cods=1,1,2,5" title="">Possibilidade de Matr�cula</a></li>
+                    <li><a id="srv_3" href="?cods=1,1,1,18" title="">Encomenda de Matr�cula</a></li>
+                    <li><a id="srv_4" href="?cods=1,1,1,20" title="">Ajuste de Matr�cula</a></li>
+                    <li><a id="srv_5" href="?cods=1,1,1,332" title="">Matr�cula de Inclus�o</a></li>
+                    <li><a id="srv_6" href="?cods=1,1,1,21" title="">Solicita��o Extracurricular</a></li>
+                    <li><a id="srv_7" href="?cods=1,1,1,22" title="">Extrato e Resultado de Solicita��o</a></li>
+                    <li><a id="srv_8" href="?cods=1,1,2,6" title="">Hor�rios e Vagas por Departamento</a></li>
+                    <li><a id="srv_9" href="?cods=1,1,2,7" title="">Hor�rios e Vagas por Grupo de Matr�cula</a></li>
+                    <li><a id="srv_10" href="?cods=1,1,1,79" title="">Confirma��o de Matr�cula Medicina</a></li>
+                    <li><a id="srv_11" href="/PortalEnsino/GradeHorarios/index.php" title="">Grade de Hor�rios</a>
+                    </li>
+                    <li><a id="srv_12" href="?cods=1,1,2,8" title="">Avalia��o de Desempenho</a></li>
+                    <li><a id="srv_13" href="?cods=1,1,1,17" title="">Ordenamento</a></li>
+                    <li><a id="srv_14" href="?cods=1,1,2,4" title="">Hist�rico do Curso</a></li>
+                    <li class="destaque"><a id="srv_15" href="?cods=1,1,2,11" title="">Comprovante de Matr�cula
+                        Autenticado</a></li>
+                    <li><a id="srv_16" href="?cods=1,1,1,325" title="">Exclus�o de Matr�cula</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+    <div id="estrutura">
+        <div id="cabecalho">
+            <img id="cabecalho_logo" src="./files/logo_ufrgs_new.png">
+            <div id="cabecalho_ufrgs">Universidade Federal do Rio Grande do Sul</div>
+            <div id="cabecalho_portal">Portal da Matr�cula</div>
+            <div id="titulo-pagina">Comprovante de Matr�cula Autenticado</div>
+        </div>
+        <div id="cont">
+            <div id="conteudo">
+                <script type="text/javascript" language="javascript">
+						function NovoComprovante(url)
+		{
+			window.open(url,'_blank');
+			//window.location=windows.location;
+			setTimeout(function(){document.location.reload(true);},2000);
+		}
+					</script>
+                <div class="moldura">
+                    Voc� imprimiu um comprovante de matr�cula em <b>15/03/2023</b>, e ele � v�lido at�
+                    <b>29/04/2023</b>.<br /><br /><br />
+                    <a href="/PortalEnsino/GraduacaoAluno/public/exibeComprovantePDF.php?chave=123ABC"
+                       target="_blank">Reimprimir o comprovante de matr�cula autenticado.</a><br /><br />
+
+                    <a
+                            href="javascript: NovoComprovante('/PortalEnsino/GraduacaoAluno/public/Comprovante.php?Sem=2022022'); ">Imprimir
+                        novo comprovante de matr�cula autenticado.</a>
+
+                </div>
+                <!-- Piwik -->
+                <script type="text/javascript">
+						var _paq = _paq || [];
+  _paq.push(['setCustomUrl', location.href.toLowerCase()]);
+  _paq.push(['setCustomVariable','1','servidor','asterope3']);
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.ufrgs.br/piwik/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "40"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+					</script>
+                <!-- End Piwik Code -->
+
+
+            </div>
+            <!--conteudo-->
+
+            <div id="baixo-estrutura">
+                <div id="canto-dir"></div>
+            </div>
+            <!--baixo-estrutura-->
+
+        </div>
+        <!--cont-->
+    </div>
+    <!--estrutura-->
+
+</div>
+<!--geral-->
+
+
+
+
+
+</body>
+
+</html>

@@ -124,4 +124,31 @@ class JsoupUfrgsPageParser : UfrgsPageParser {
             .text()
             .toInt()
     }
+
+    override fun parseEnrollment(html: String): String {
+        val doc = Jsoup.parse(html)
+
+        return if (html.contains("Reimprimir o comprovante")) {
+            getPreGeneratedPage(doc.getElementsByClass("moldura"))
+        } else {
+            throw JavascriptException()
+        }
+    }
+
+    private fun getPreGeneratedPage(elements: Elements): String {
+        val first = elements.first() ?: throw CouldNotParseException()
+
+        var pageLink = first.getElementsByTag("a").attr("href")
+        if (pageLink.isNullOrEmpty()) {
+            throw CouldNotParseException()
+        }
+
+        if (!(pageLink.startsWith("www") || pageLink.startsWith("http"))) {
+            pageLink = "www1.ufrgs.br$pageLink"
+        }
+        if (!pageLink.startsWith("http")) {
+            pageLink = "http://$pageLink"
+        }
+        return pageLink
+    }
 }

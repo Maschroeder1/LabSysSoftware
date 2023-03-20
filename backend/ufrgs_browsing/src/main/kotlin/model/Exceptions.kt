@@ -9,3 +9,5 @@ class OutdatedCookieException : RuntimeException()
 class NoPossibilitiesException : RuntimeException()
 
 class KeyNotRegisteredException : RuntimeException()
+
+class JavascriptException : RuntimeException()

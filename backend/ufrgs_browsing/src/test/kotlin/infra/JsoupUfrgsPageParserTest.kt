@@ -2,8 +2,8 @@ package infra
 
 import com.google.gson.Gson
 import model.*
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
 import kotlin.test.fail
 
 class JsoupUfrgsPageParserTest {
@@ -11,7 +11,7 @@ class JsoupUfrgsPageParserTest {
 
     @Test
     fun parsesPossibilitiesPage() {
-        val possibilitiesPage = getPossibilitiesHtml()
+        val possibilitiesPage = getHtml("/possibilities.html")
         val expected = listOf(
             ClassCode("ARQUITETURAS AVAN�ADAS DE COMPUTADORES - (INF01191)", "3671", "36", "95", "2022022", "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=3671_2019012"),
             ClassCode("BIOLOGIA COMPUTACIONAL - (INF05018)", "19994", "36", "95", "2022022", "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=19994_2019022")
@@ -24,7 +24,7 @@ class JsoupUfrgsPageParserTest {
 
     @Test
     fun parsesClassPageWithMultiplePossibilities() {
-        val classPage = getMultiplePossibilitiesClassHtml()
+        val classPage = getHtml("/class_multiple.html")
 
         val actual = parser.parseClass(classPage)
 
@@ -33,23 +33,40 @@ class JsoupUfrgsPageParserTest {
 
     @Test
     fun parsesClassPageWithRemoteClassOption() {
-        val classPage = getClassHtmlRemoteClass()
+        val classPage = getHtml("/class_remote.html")
 
         val actual = parser.parseClass(classPage)
 
         assertEquals(getRemoteClassExpected(), actual)
     }
 
-    private fun getPossibilitiesHtml(): String {
-        return getHtml("/possibilities.html")
+    @Test
+    fun parsesRecentPreGeneratedEnrollmentPage() {
+        val preGeneratedEnrollmentPage = getHtml("/enrollment_generated_new.html")
+
+        val actual = parser.parseEnrollment(preGeneratedEnrollmentPage)
+
+        assertEquals(
+            "http://www1.ufrgs.br/PortalEnsino/GraduacaoAluno/public/exibeComprovantePDF.php?chave=123ABC", actual)
     }
 
-    private fun getMultiplePossibilitiesClassHtml(): String {
-        return getHtml("/class_multiple.html")
+    @Test
+    fun parsesOlderPreGeneratedEnrollmentPage() {
+        val preGeneratedEnrollmentPage = getHtml("/enrollment_generated_old.html")
+
+        val actual = parser.parseEnrollment(preGeneratedEnrollmentPage)
+
+        assertEquals(
+            "http://www1.ufrgs.br/PortalEnsino/GraduacaoAluno/public/exibeComprovantePDF.php?chave=123ABC", actual)
     }
 
-    private fun getClassHtmlRemoteClass(): String {
-        return getHtml("/class_remote.html")
+    @Test
+    fun throwsIfNoEnrollmentWasGenerated() {
+        val preGeneratedEnrollmentPage = getHtml("/enrollment_not_generated.html")
+
+        assertThrows(JavascriptException::class.java) {
+            parser.parseEnrollment(preGeneratedEnrollmentPage)
+        }
     }
 
     private fun getHtml(source: String): String {

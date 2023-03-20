@@ -8,4 +8,6 @@ interface UfrgsPageParser {
     fun parsePossibilities(html: String) : List<ClassCode>
 
     fun parseClass(html: String) : CollegeClass
+
+    fun parseEnrollment(html: String): String
 }

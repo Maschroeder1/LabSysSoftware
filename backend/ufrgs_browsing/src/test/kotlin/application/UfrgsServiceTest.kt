@@ -9,7 +9,9 @@ class UfrgsServiceTest {
     private val loginRequester = mock(LoginRequester::class.java)
     private var possibilitiesRequester = mock(PossibilitiesRequester::class.java)
     private var collegeClassRequester = mock(CollegeClassRequester::class.java)
-    private val service = UfrgsService(loginRequester, possibilitiesRequester, collegeClassRequester)
+    private var enrollmentDeclarationRequester = mock(EnrollmentDeclarationRequester::class.java)
+    private val service = UfrgsService(
+        loginRequester, possibilitiesRequester, collegeClassRequester, enrollmentDeclarationRequester)
 
     @Test
     fun delegatesLoginToLoginRequester() {
@@ -41,6 +43,16 @@ class UfrgsServiceTest {
         `when`(collegeClassRequester.bulkQuery(123)).thenReturn(expected)
 
         val actual = service.retrieveCurrentPossibilities(123)
+
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun returnsEnrollmentDeclaration() {
+        val expected = "A link to enrollment declaration"
+        `when`(enrollmentDeclarationRequester.requestEnrollmentDeclaration(Cookie("123"))).thenReturn(expected)
+
+        val actual = service.retrieveEnrollmentDeclaration(Cookie("123"))
 
         assertEquals(expected, actual)
     }
