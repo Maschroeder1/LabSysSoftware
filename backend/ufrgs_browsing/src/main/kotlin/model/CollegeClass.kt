@@ -1,6 +1,6 @@
 package model
 
-data class CollegeClass(val timeslots: List<Timeslot>, val credits: Int)
+data class CollegeClass(val timeslots: List<Timeslot>, val credits: Int, var classPlan: String?)
 
 data class Timeslot(
     val classIdentifier: String, val availableSlots: Int, val professors: List<String>, val scheduledTimes: List<ScheduleTime>

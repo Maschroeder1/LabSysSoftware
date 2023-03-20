@@ -13,8 +13,8 @@ class JsoupUfrgsPageParserTest {
     fun parsesPossibilitiesPage() {
         val possibilitiesPage = getPossibilitiesHtml()
         val expected = listOf(
-            ClassCode("ARQUITETURAS AVAN�ADAS DE COMPUTADORES - (INF01191)", "3671", "36", "95", "2022022"),
-            ClassCode("BIOLOGIA COMPUTACIONAL - (INF05018)", "19994", "36", "95", "2022022")
+            ClassCode("ARQUITETURAS AVAN�ADAS DE COMPUTADORES - (INF01191)", "3671", "36", "95", "2022022", "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=3671_2019012"),
+            ClassCode("BIOLOGIA COMPUTACIONAL - (INF05018)", "19994", "36", "95", "2022022", "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=19994_2019022")
         )
 
         val actual = parser.parsePossibilities(possibilitiesPage)

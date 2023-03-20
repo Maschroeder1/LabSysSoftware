@@ -24,7 +24,9 @@ class UfrgsServiceTest {
     @Test
     fun returnsKeyForUserRequest() {
         val cookie = Cookie("123")
-        val possibilities = listOf(ClassCode("Class1", "1", "2", "3", "4"), ClassCode("Class2", "5", "6", "7", "8"))
+        val possibilities = listOf(
+            ClassCode("Class1", "1", "2", "3", "4", "classPlan1"),
+            ClassCode("Class2", "5", "6", "7", "8", null))
         `when`(possibilitiesRequester.requestPossibilities(cookie)).thenReturn(possibilities)
         `when`(collegeClassRequester.bulkRequest(possibilities)).thenReturn(123)
 
@@ -35,7 +37,7 @@ class UfrgsServiceTest {
 
     @Test
     fun returnsPossibilitiesForKey() {
-        val expected = mapOf("c1" to CollegeClass(emptyList(), 1), "c2" to null)
+        val expected = mapOf("c1" to CollegeClass(emptyList(), 1, null), "c2" to null)
         `when`(collegeClassRequester.bulkQuery(123)).thenReturn(expected)
 
         val actual = service.retrieveCurrentPossibilities(123)

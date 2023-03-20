@@ -55,7 +55,8 @@ Expected response:
                     ]
                 }
             ],
-            "credits": 4
+            "credits": 4,
+            "classPlan": "http://www1.ufrgs.br/path/to/class/plan/pdf"
         },
         "CLASS 2 (CODE2)": null
     }

@@ -25,7 +25,9 @@ class AsyncHttpRequestCollegeClassRequester(
             val request = creator.createGetRequest(toClassUri(code))
             val response = client.send(request, HttpResponse.BodyHandlers.ofString())
 
-            controller.cache(code.className, parser.parseClass(response.body()))
+            val collegeClass = parser.parseClass(response.body())
+            collegeClass.classPlan = code.classPlan
+            controller.cache(code.className, collegeClass)
         } catch (e: Exception) {
             controller.queueClassesToProcess(listOf(code))
         }
