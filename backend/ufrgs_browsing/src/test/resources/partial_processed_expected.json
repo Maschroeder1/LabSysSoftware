@@ -1,0 +1,40 @@
+[
+    {
+      "name": "Class1 - (CODE1)",
+      "timeslots": [
+        {
+          "classIdentifier": "U",
+          "availableSlots": 10,
+          "professors": [
+            "PROFESSOR1"
+          ],
+          "scheduledTimes": [
+            {
+              "day": "Segunda",
+              "shortDay": "seg",
+              "startTime": "08:30",
+              "endTime": "10:10",
+              "location": "Classroom 123 - Building 456",
+              "locationMap": "http://link.com/to/location1"
+            },
+            {
+              "day": "Quarta",
+              "shortDay": "qua",
+              "startTime": "08:30",
+              "endTime": "10:10",
+              "location": "Classroom 123 - Building 456",
+              "locationMap": "http://link.com/to/location1"
+            }
+          ]
+        }
+      ],
+      "credits": 4,
+      "classPlan": "http://link.com/to/classplan1.pdf"
+    },
+    {
+      "name": "Class2 - (CODE2)",
+      "timeslots": null,
+      "credits": null,
+      "classPlan": null
+    }
+  ]

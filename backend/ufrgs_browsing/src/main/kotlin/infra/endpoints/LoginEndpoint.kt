@@ -14,21 +14,20 @@ class LoginEndpoint(private val service: UfrgsService) : Endpoint {
         if (input !is Login) {
             return ResponseEntity.status(400).body(ApiResponse("Badly formatted input", null))
         }
+        if (input.user.isEmpty() && input.password.isEmpty()) {
+            return ResponseEntity.status(400).body(ApiResponse("Missing user and password", null))
+        }
+        if (input.user.isEmpty()) {
+            return ResponseEntity.status(400).body(ApiResponse("Missing user", null))
+        }
+        if (input.password.isEmpty()) {
+            return ResponseEntity.status(400).body(ApiResponse("Missing password", null))
+        }
 
         return doProcess(input)
     }
 
     private fun doProcess(credentials: Login): ResponseEntity<ApiResponse> {
-        if (credentials.user.isEmpty() && credentials.password.isEmpty()) {
-            return ResponseEntity.status(400).body(ApiResponse("Missing user and password", null))
-        }
-        if (credentials.user.isEmpty()) {
-            return ResponseEntity.status(400).body(ApiResponse("Missing user", null))
-        }
-        if (credentials.password.isEmpty()) {
-            return ResponseEntity.status(400).body(ApiResponse("Missing password", null))
-        }
-
         val response = service.requestLogin(credentials)
 
         return when (response.reason) {
