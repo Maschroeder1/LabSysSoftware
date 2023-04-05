@@ -1,18 +1,6 @@
 import React, {Component} from 'react';
-import {DayPilot, DayPilotCalendar, DayPilotNavigator} from "@daypilot/daypilot-lite-react";
-import "./CalendarStyles.css";
+import {DayPilot, DayPilotCalendar} from "daypilot-pro-react";
 
-const styles = {
-  wrap: {
-    display: "flex"
-  },
-  left: {
-    marginRight: "10px"
-  },
-  main: {
-    flexGrow: "1"
-  }
-};
 
 const days = {
   seg: "2023-04-03T",
@@ -33,45 +21,51 @@ const createEventsFromCadeira = (cadeira) => {
 }
 class Calendar extends Component {
 
+
+  closeModal = () => this.setState({...this.state, modal: {isModalOpen: false, content: ""}});
+
+  openModal = (content) => {
+    this.setState({...this.state, modal: {isModalOpen: true, content}})
+  };
+
+
   constructor(props) {
     super(props);
     this.calendarRef = React.createRef();
     this.state = {
       viewType: "Week",
+      headerDateFormat: "dddd",
       cellDuration: 10,
-      cellHeight: 30,
-      dayBeginsHour: 9,
+      businessBeginsHour: 7,
+      businessEndsHour: 23,
+      dayBeginsHour: 7,
       dayEndsHour: 23,
+      cellHeight: 10,
       timeRangeSelectedHandling: "Disabled",
       eventDeleteHandling: "Disabled",
-      eventMoveHandling: "Update",
-      onEventMoved: (args) => {
-        args.control.message("Event moved: " + args.e.text());
-      },
-      eventResizeHandling: "Update",
-      onEventResized: (args) => {
-        args.control.message("Event resized: " + args.e.text());
-      },
-      eventClickHandling: "Disabled",
+      eventMoveHandling: "Disabled",
+      eventResizeHandling: "Disabled",
       eventHoverHandling: "Disabled",
-    }
+      eventClickHandling: "Enabled",
+      onEventClicked: (args) => {
+        const title = args.e.text();
+
+        const events = this.state.events ?? []
+
+        const event = this.props.calendario.find(
+         (item) => {
+           return item.name === title
+         }
+        )
+
+        console.log({event})
+        this.openModal(event)
+
+      },
+    };
   }
-
-  get calendar() {
-    return this.calendarRef.current.control;
-  }
-
-  colors = [ // @todo
-
-  ]
-
-
-
 
   componentDidMount() {
-
-    // console.log(this.props.calendario[0])
-    // console.log(createEventsFromCadeira(this.props.calendario[0]))
 
     const calendario = this.props?.calendario ?? [[]]
 
@@ -81,51 +75,36 @@ class Calendar extends Component {
 
     console.log({calendario, events})
 
-    const events2 = [
-      {
-        id: 1,
-        text: "Event 1",
-        start: "2023-03-07T10:30:00",
-        end: "2023-03-07T13:00:00"
-      },
-      {
-        id: 2,
-        text: "Event 2",
-        start: "2023-03-08T09:30:00",
-        end: "2023-03-08T11:30:00",
-        backColor: "#6aa84f"
-      },
-      {
-        id: 3,
-        text: "Event 3",
-        start: "2023-03-08T12:00:00",
-        end: "2023-03-08T15:00:00",
-        backColor: "#f1c232"
-      },
-      {
-        id: 4,
-        text: "Event 4",
-        start: "2023-03-06T11:30:00",
-        end: "2023-03-06T14:30:00",
-        backColor: "#cc4125"
-      },
-    ];
 
-    const startDate = "2023-04-03";
-
-    this.calendar.update({startDate, events});
+    this.setState({
+      startDate: "2023-04-03",
+      events,
+      modal: this.state.modal
+    });
 
   }
 
+  get calendar() {
+    return this.calendarRef.current.control;
+  }
+
+
   render() {
+    const isModalOpen = this.state.modal?.isModalOpen;
+    console.log(this.state)
     return (
-      <div style={styles.wrap}>
-        <div style={styles.main}>
-          <DayPilotCalendar
-            {...this.state}
-            ref={this.calendarRef}
-          />
+      <div>
+        {isModalOpen && <>
+          <button className="layer" onClick={this.closeModal}/>
+          <div className="modal">
+            {console.log("augusto olha aqui =>>>>", this.state.modal.content)}
+            {/*    TODO ARRUMAR AQUI*/}
         </div>
+        </>}
+        <DayPilotCalendar
+          {...this.state}
+          ref={this.calendarRef}
+        />
       </div>
     );
   }
