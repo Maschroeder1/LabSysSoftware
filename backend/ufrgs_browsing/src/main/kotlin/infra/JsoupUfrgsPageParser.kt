@@ -108,7 +108,12 @@ class JsoupUfrgsPageParser : UfrgsPageParser {
         if (times[1].contains(" ")) {
             times[1] = times[1].substringBefore(" ")
         }
-        return ScheduleTime(day, times[0].trim(), times[1].trim(), location, locationMap)
+        val shortDay = if (day != "???" && day.length > 3) {
+            day.lowercase().substring(0, 3)
+        } else {
+            null
+        }
+        return ScheduleTime(day, shortDay, times[0].trim(), times[1].trim(), location, locationMap)
     }
 
     private fun toScheduleTime(elem: Element): ScheduleTime {

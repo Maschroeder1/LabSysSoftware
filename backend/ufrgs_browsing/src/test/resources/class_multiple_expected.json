@@ -9,6 +9,7 @@
       "scheduledTimes": [
         {
           "day": "Segunda",
+          "shortDay": "seg",
           "startTime": "13:30",
           "endTime": "15:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -16,6 +17,7 @@
         },
         {
           "day": "Quarta",
+          "shortDay": "qua",
           "startTime": "13:30",
           "endTime": "15:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -23,6 +25,7 @@
         },
         {
           "day": "Quinta",
+          "shortDay": "qui",
           "startTime": "13:30",
           "endTime": "15:10",
           "location": ""
@@ -39,6 +42,7 @@
       "scheduledTimes": [
         {
           "day": "Segunda",
+          "shortDay": "seg",
           "startTime": "15:30",
           "endTime": "17:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -46,6 +50,7 @@
         },
         {
           "day": "Quarta",
+          "shortDay": "qua",
           "startTime": "15:30",
           "endTime": "17:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -53,6 +58,7 @@
         },
         {
           "day": "Quinta",
+          "shortDay": "qui",
           "startTime": "15:30",
           "endTime": "17:10",
           "location": "Laborat�rio de Ensino 102 - 43413 4",
@@ -70,6 +76,7 @@
       "scheduledTimes": [
         {
           "day": "Ter�a",
+          "shortDay": "ter",
           "startTime": "13:30",
           "endTime": "15:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -77,6 +84,7 @@
         },
         {
           "day": "Quinta",
+          "shortDay": "qui",
           "startTime": "13:30",
           "endTime": "15:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -84,6 +92,7 @@
         },
         {
           "day": "Sexta",
+          "shortDay": "sex",
           "startTime": "15:30",
           "endTime": "17:10",
           "location": "Laborat�rio de Ensino 101 - 43413 4",
@@ -100,6 +109,7 @@
       "scheduledTimes": [
         {
           "day": "Ter�a",
+          "shortDay": "ter",
           "startTime": "15:30",
           "endTime": "17:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -107,6 +117,7 @@
         },
         {
           "day": "Quinta",
+          "shortDay": "qui",
           "startTime": "15:30",
           "endTime": "17:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -114,6 +125,7 @@
         },
         {
           "day": "Sexta",
+          "shortDay": "sex",
           "startTime": "15:30",
           "endTime": "17:10",
           "location": "Laborat�rio de Ensino 102 - 43413 4",
@@ -130,6 +142,7 @@
       "scheduledTimes": [
         {
           "day": "Segunda",
+          "shortDay": "seg",
           "startTime": "13:30",
           "endTime": "15:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -137,6 +150,7 @@
         },
         {
           "day": "Quarta",
+          "shortDay": "qua",
           "startTime": "13:30",
           "endTime": "15:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -144,6 +158,7 @@
         },
         {
           "day": "Quinta",
+          "shortDay": "qui",
           "startTime": "15:30",
           "endTime": "17:10",
           "location": "Laborat�rio de Ensino 104 - 43413 4",
@@ -161,6 +176,7 @@
       "scheduledTimes": [
         {
           "day": "Ter�a",
+          "shortDay": "ter",
           "startTime": "13:30",
           "endTime": "15:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -168,6 +184,7 @@
         },
         {
           "day": "Quinta",
+          "shortDay": "qui",
           "startTime": "13:30",
           "endTime": "15:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -175,6 +192,7 @@
         },
         {
           "day": "Sexta",
+          "shortDay": "sex",
           "startTime": "13:30",
           "endTime": "15:10",
           "location": "Laborat�rio de Ensino 101 - 43413 4",
@@ -191,6 +209,7 @@
       "scheduledTimes": [
         {
           "day": "Ter�a",
+          "shortDay": "ter",
           "startTime": "15:30",
           "endTime": "17:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -198,6 +217,7 @@
         },
         {
           "day": "Quinta",
+          "shortDay": "qui",
           "startTime": "15:30",
           "endTime": "17:10",
           "location": "SALA DE AULA 114 - PR�DIO 43425 4",
@@ -205,6 +225,7 @@
         },
         {
           "day": "Sexta",
+          "shortDay": "sex",
           "startTime": "13:30",
           "endTime": "15:10",
           "location": "Laborat�rio de Ensino 102 - 43413 4",

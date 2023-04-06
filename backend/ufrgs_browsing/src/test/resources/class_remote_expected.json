@@ -9,6 +9,7 @@
       "scheduledTimes": [
         {
           "day": "Ter�a",
+          "shortDay": "ter",
           "startTime": "16:30",
           "endTime": "18:10",
           "location": "EAD",
@@ -16,6 +17,7 @@
         },
         {
           "day": "Quinta",
+          "shortDay": "qui",
           "startTime": "16:30",
           "endTime": "18:10",
           "location": "EAD",
