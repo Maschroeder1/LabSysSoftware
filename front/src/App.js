@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Calendar from "./calendar/Calendar";
 import {Login} from "./login";
+import {initializeClasses, retrieveClasses, retrieveEnrollmentDeclaration} from "./requests";
 
 class App extends Component {
 
@@ -90,11 +91,103 @@ class App extends Component {
       }
     ]
   ]
+  firstFetch = true // fiz soh para nao spammar, tem que ver maneira melhor de fazer
+  firstInitializeRequest = true
+  firstEnrollmentRequest = true
 
   constructor(props) {
     super(props);
     this.state = {
       isLoggedIn: false,
+      requestCode: false,
+      enrollmentDeclarationLink: ''
+    }
+  }
+
+  initializeRequestCode() {
+    const code = async() => {
+      let response = await initializeClasses()
+      
+      switch (response.statusCode) {
+        case 200:
+          this.setState({...this.state, requestCode: response.content.content})
+          break
+        case 400: // ou cookie nao eh string ou nao tem nenhuma aula
+        case 401: // ou sem cookie ou cookie outdated
+        case 501: // erro no parse da resposta da ufrgs
+        case 502: // erro de network com a ufrgs
+        case 500: // erro generico, tratar junto com default
+        default: // nao deve ser possivel
+      }
+    }
+    if (this.firstInitializeRequest) {
+      this.firstInitializeRequest = false
+      code()
+    }
+  }
+
+  retrieveRequestCode() {
+    const classes = async() => {
+      let respose = await retrieveClasses(this.state.requestCode)
+      let sleep = () => new Promise(resolve => setTimeout(resolve, 1000))
+
+      while (respose.statusCode === 206) { // resultado parcial, ficar dando query ateh completo
+        console.log("Resultado parcial")
+        console.log(respose.content.content) // probs setState?
+        await sleep() // 1 query/sec
+        respose = await retrieveClasses(this.state.requestCode)
+      }
+
+      switch (respose.statusCode) {
+        case 200:
+          console.log("Resultado completo")
+          console.log(respose.content.content) // probs setState
+          break
+        case 400: // this.state.requestCode nao reconhecido
+        case 500: // erro generico, tratar junto com default
+        default: // nao deve ser possivel
+      }
+    }
+    if (!!this.state.requestCode && this.firstFetch) {
+      this.firstFetch = false
+      classes()
+    }
+  }
+
+  getEnrollmentDeclaration() {
+    const link = async() => {
+      let response = await retrieveEnrollmentDeclaration()
+
+      switch(response.statusCode) {
+        case 200:
+          console.log(response.content.content)
+          this.setState({...this.state, enrollmentDeclarationLink: response.content.content})
+          break
+        case 400: // ou cookie nao eh string ou nao existe declaracao previamente gerada
+        case 401: // ou sem cookie ou cookie outdated
+        case 501: // erro no parse da resposta da ufrgs
+        case 502: // erro de network com a ufrgs
+        case 500: // erro generico, tratar junto com default
+        default: // nao deve ser possivel
+      }
+    }
+    if (this.firstEnrollmentRequest) {
+      this.firstEnrollmentRequest = false
+      link()
+    }
+  }
+
+  doRenderStuff() { // temp para chamar as minhas funcoes
+    if (this.state.isLoggedIn) {
+      if (!this.state.requestCode) {
+        this.initializeRequestCode()
+      } else {
+        this.retrieveRequestCode()
+      }
+      this.getEnrollmentDeclaration()
+      return this.calendars.map((item) => <Calendar calendario={item}/>)
+    } else {
+      return <Login loginCallback={(isLoggedIn) => this.setState({...this.state, isLoggedIn: isLoggedIn})}/>
     }
   }
 
@@ -102,12 +195,7 @@ class App extends Component {
     console.log(this.state.isLoggedIn)
     return (
         <>
-          {this.state.isLoggedIn ?
-              this.calendars.map((item) => <Calendar calendario={item}/>)
-              : <Login loginCallback={(isLoggedIn) => this.setState({isLoggedIn})}/>
-
-          }
-
+          {this.doRenderStuff()}
         </>
     );
   }
