@@ -2,19 +2,21 @@
 
 200 - OK
 {
-    "message": "Ok",
-    "content": {
-        "ARQUITETURAS AVANÇADAS DE COMPUTADORES - (INF01191)": {
+    "message": "Processing",
+    "content": [
+        {
+            "name": "ARQUITETURAS AVANÇADAS DE COMPUTADORES - (INF01191)",
             "timeslots": [
                 {
-                    "classIdentifier": "U",
-                    "availableSlots": 10,
+                    "classIdentifier": "A",
+                    "availableSlots": 5,
                     "professors": [
                         "ANTONIO CARLOS SCHNEIDER BECK FILHO"
                     ],
                     "scheduledTimes": [
                         {
                             "day": "Segunda",
+                            "shortDay": "seg",
                             "startTime": "08:30",
                             "endTime": "10:10",
                             "location": "SALA DE AULA 104 - PRÉDIO 43425 4",
@@ -22,6 +24,32 @@
                         },
                         {
                             "day": "Quarta",
+                            "shortDay": "qua",
+                            "startTime": "08:30",
+                            "endTime": "10:10",
+                            "location": "SALA DE AULA 104 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        }
+                    ]
+                },
+                {
+                    "classIdentifier": "B",
+                    "availableSlots": 10,
+                    "professors": [
+                        "ANTONIO CARLOS SCHNEIDER BECK FILHO"
+                    ],
+                    "scheduledTimes": [
+                        {
+                            "day": "Terça",
+                            "shortDay": "ter",
+                            "startTime": "08:30",
+                            "endTime": "10:10",
+                            "location": "SALA DE AULA 104 - PRÉDIO 43425 4",
+                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=44"
+                        },
+                        {
+                            "day": "Quinta",
+                            "shortDay": "qui",
                             "startTime": "08:30",
                             "endTime": "10:10",
                             "location": "SALA DE AULA 104 - PRÉDIO 43425 4",
@@ -33,7 +61,8 @@
             "credits": 4,
             "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=3671_2019012"
         },
-        "BIOLOGIA COMPUTACIONAL - (INF05018)": {
+        {
+            "name": "BIOLOGIA COMPUTACIONAL - (INF05018)",
             "timeslots": [
                 {
                     "classIdentifier": "U",
@@ -44,6 +73,7 @@
                     "scheduledTimes": [
                         {
                             "day": "Terça",
+                            "shortDay": "ter",
                             "startTime": "13:30",
                             "endTime": "15:10",
                             "location": "",
@@ -51,6 +81,7 @@
                         },
                         {
                             "day": "Quinta",
+                            "shortDay": "qui",
                             "startTime": "13:30",
                             "endTime": "15:10",
                             "location": "",
@@ -62,7 +93,8 @@
             "credits": 4,
             "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=19994_2019022"
         },
-        "COMPUTADOR E SOCIEDADE - (INF01140)": {
+        {
+            "name": "COMPUTADOR E SOCIEDADE - (INF01140)",
             "timeslots": [
                 {
                     "classIdentifier": "U",
@@ -73,6 +105,7 @@
                     "scheduledTimes": [
                         {
                             "day": "Quarta",
+                            "shortDay": "qua",
                             "startTime": "08:30",
                             "endTime": "11:50",
                             "location": "SALA DE AULA 112 - PRÉDIO 43425 4",
@@ -84,7 +117,8 @@
             "credits": 4,
             "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=3642_2019022"
         },
-        "CONCEPÇÃO DE CIRCUITOS INTEGRADOS I - (INF01185)": {
+        {
+            "name": "CONCEPÇÃO DE CIRCUITOS INTEGRADOS I - (INF01185)",
             "timeslots": [
                 {
                     "classIdentifier": "U",
@@ -95,6 +129,7 @@
                     "scheduledTimes": [
                         {
                             "day": "Terça",
+                            "shortDay": "ter",
                             "startTime": "15:30",
                             "endTime": "17:10",
                             "location": "SALA DE AULA 111 - PRÉDIO 43425 4",
@@ -102,6 +137,7 @@
                         },
                         {
                             "day": "Quinta",
+                            "shortDay": "qui",
                             "startTime": "15:30",
                             "endTime": "17:10",
                             "location": "SALA DE AULA 111 - PRÉDIO 43425 4",
@@ -113,7 +149,8 @@
             "credits": 4,
             "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=3666_2015022"
         },
-        "ESPECIFICAÇÃO FORMAL N - (INF01001)": {
+        {
+            "name": "ESPECIFICAÇÃO FORMAL N - (INF01001)",
             "timeslots": [
                 {
                     "classIdentifier": "U",
@@ -124,6 +161,7 @@
                     "scheduledTimes": [
                         {
                             "day": "Quarta",
+                            "shortDay": "qua",
                             "startTime": "13:30",
                             "endTime": "15:10",
                             "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
@@ -131,6 +169,7 @@
                         },
                         {
                             "day": "Sexta",
+                            "shortDay": "sex",
                             "startTime": "13:30",
                             "endTime": "15:10",
                             "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
@@ -142,7 +181,8 @@
             "credits": 4,
             "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=7942_2022012"
         },
-        "FUNDAMENTOS DE VISÃO COMPUTACIONAL - (INF01030)": {
+        {
+            "name": "FUNDAMENTOS DE VISÃO COMPUTACIONAL - (INF01030)",
             "timeslots": [
                 {
                     "classIdentifier": "U",
@@ -153,6 +193,7 @@
                     "scheduledTimes": [
                         {
                             "day": "Segunda",
+                            "shortDay": "seg",
                             "startTime": "08:30",
                             "endTime": "10:10",
                             "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
@@ -160,6 +201,7 @@
                         },
                         {
                             "day": "Quarta",
+                            "shortDay": "qua",
                             "startTime": "08:30",
                             "endTime": "10:10",
                             "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
@@ -171,7 +213,8 @@
             "credits": 4,
             "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=24387_2015022"
         },
-        "GERÊNCIA E APLICAÇÕES EM REDES - (INF01015)": {
+        {
+            "name": "GERÊNCIA E APLICAÇÕES EM REDES - (INF01015)",
             "timeslots": [
                 {
                     "classIdentifier": "U",
@@ -182,6 +225,7 @@
                     "scheduledTimes": [
                         {
                             "day": "Terça",
+                            "shortDay": "ter",
                             "startTime": "15:30",
                             "endTime": "17:10",
                             "location": "SALA DE AULA 109 - PRÉDIO 43425 4",
@@ -189,6 +233,7 @@
                         },
                         {
                             "day": "Quinta",
+                            "shortDay": "qui",
                             "startTime": "15:30",
                             "endTime": "17:10",
                             "location": "SALA DE AULA 109 - PRÉDIO 43425 4",
@@ -200,7 +245,8 @@
             "credits": 4,
             "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=7956_2010022"
         },
-        "MODELAGEM E GERENCIAMENTO DE PROCESSOS DE NEGÓCIO - (INF01216)": {
+        {
+            "name": "MODELAGEM E GERENCIAMENTO DE PROCESSOS DE NEGÓCIO - (INF01216)",
             "timeslots": [
                 {
                     "classIdentifier": "U",
@@ -211,6 +257,7 @@
                     "scheduledTimes": [
                         {
                             "day": "Terça",
+                            "shortDay": "ter",
                             "startTime": "13:30",
                             "endTime": "15:10",
                             "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
@@ -218,6 +265,7 @@
                         },
                         {
                             "day": "Quinta",
+                            "shortDay": "qui",
                             "startTime": "13:30",
                             "endTime": "15:10",
                             "location": "SALA DE AULA 102 - PRÉDIO 43425 4",
@@ -229,71 +277,107 @@
             "credits": 4,
             "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=29416_2017012"
         },
-        "PROJETO DE BANCO DE DADOS - (INF01006)": {
-            "timeslots": [
-                {
-                    "classIdentifier": "U",
-                    "availableSlots": 30,
-                    "professors": [
-                        "RENATA DE MATOS GALANTE"
-                    ],
-                    "scheduledTimes": [
-                        {
-                            "day": "Segunda",
-                            "startTime": "15:30",
-                            "endTime": "17:10",
-                            "location": "",
-                            "locationMap": null
-                        },
-                        {
-                            "day": "Quarta",
-                            "startTime": "15:30",
-                            "endTime": "17:10",
-                            "location": "",
-                            "locationMap": null
-                        }
-                    ]
-                }
-            ],
-            "credits": 4,
-            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=7947_2020012"
+        {
+            "name": "PROJETO DE BANCO DE DADOS - (INF01006)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
         },
-        "PROJETO EM COMPUTAÇÃO GRÁFICA - (INF01019)": {
-            "timeslots": [
-                {
-                    "classIdentifier": "U",
-                    "availableSlots": 30,
-                    "professors": [
-                        "LUCIANA PORCHER NEDEL"
-                    ],
-                    "scheduledTimes": [
-                        {
-                            "day": "Sexta",
-                            "startTime": "08:30",
-                            "endTime": "11:50",
-                            "location": "Laboratório de Ensino 104 - 43413 4",
-                            "locationMap": "http://mapa.ufrgs.br/index.php?verb=pan&building=1885"
-                        }
-                    ]
-                }
-            ],
-            "credits": 4,
-            "classPlan": "http://www1.ufrgs.br/Ensino/PlanoDeEnsino/PlanoDeEnsinoPDF/Paginas/Visao/PDFPlanoDeEnsino.php?AtividadeEnsino=7960_2015022"
+        {
+            "name": "PROJETO EM COMPUTAÇÃO GRÁFICA - (INF01019)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
         },
-        "APRENDIZADO DE MÁQUINA - (INF01017)": null,
-        "SISTEMAS DIGITAIS PARA COMPUTADORES A - (INF01175)": null,
-        "SISTEMAS ESPECIALISTAS N - (INF01038)": null,
-        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO I - (INF01179)": null,
-        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO IX - (INF05009)": null,
-        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XII - (INF01063)": null,
-        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XV - (INF05013)": null,
-        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XXIV - (INF01068)": null,
-        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XXXIV - (INF01219)": null,
-        "TÓPICOS ESPECIAIS EM ENGENHARIA DE COMPUTAÇÃO IV - (INF01053)": null,
-        "COMUNICAÇÃO DE DADOS - (INF01005)": null,
-        "ECONOMIA A - (ECO02254)": null,
-        "PROGRAMAÇÃO DISTRIBUÍDA E PARALELA - (INF01008)": null,
-        "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XXVI - (INF05021)": null,
-        "TÓPICOS ESPECIAIS EM ENGENHARIA DE COMPUTAÇÃO I - (INF01050)": null
-    }
+        {
+            "name": "APRENDIZADO DE MÁQUINA - (INF01017)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "SISTEMAS DIGITAIS PARA COMPUTADORES A - (INF01175)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "SISTEMAS ESPECIALISTAS N - (INF01038)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "TÓPICOS ESPECIAIS EM COMPUTAÇÃO I - (INF01179)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "TÓPICOS ESPECIAIS EM COMPUTAÇÃO IX - (INF05009)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XII - (INF01063)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XV - (INF05013)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XXIV - (INF01068)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XXXIV - (INF01219)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "TÓPICOS ESPECIAIS EM ENGENHARIA DE COMPUTAÇÃO IV - (INF01053)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "COMUNICAÇÃO DE DADOS - (INF01005)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "ECONOMIA A - (ECO02254)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "PROGRAMAÇÃO DISTRIBUÍDA E PARALELA - (INF01008)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "TÓPICOS ESPECIAIS EM COMPUTAÇÃO XXVI - (INF05021)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        },
+        {
+            "name": "TÓPICOS ESPECIAIS EM ENGENHARIA DE COMPUTAÇÃO I - (INF01050)",
+            "timeslots": null,
+            "credits": null,
+            "classPlan": null
+        }
+    ]
 }

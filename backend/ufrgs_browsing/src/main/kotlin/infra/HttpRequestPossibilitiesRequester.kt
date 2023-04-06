@@ -10,7 +10,7 @@ class HttpRequestPossibilitiesRequester(
     private val creator: HttpRequestCreator,
     private val parser: UfrgsPageParser
 ) : PossibilitiesRequester {
-    private val endpoint = "https://www1.ufrgs.br/especial/index.php?cods=1,1,2,5"
+    private val endpoint = "https://www1.ufrgs.br/especial/index.php?cods=1,1,2,5&Sem=2022022"
 
     override fun requestPossibilities(cookie: Cookie): List<ClassCode> {
         try {

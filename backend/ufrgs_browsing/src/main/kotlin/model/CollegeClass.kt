@@ -7,5 +7,5 @@ data class Timeslot(
 )
 
 data class ScheduleTime(
-    val day: String, val startTime: String, val endTime: String, val location: String, val locationMap: String?
+    val day: String, val shortDay: String?, val startTime: String, val endTime: String, val location: String, val locationMap: String?
 )

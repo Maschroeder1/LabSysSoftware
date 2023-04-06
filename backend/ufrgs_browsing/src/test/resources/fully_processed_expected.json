@@ -1,0 +1,66 @@
+[
+    {
+      "name": "Class1 - (CODE1)",
+      "timeslots": [
+        {
+          "classIdentifier": "U",
+          "availableSlots": 10,
+          "professors": [
+            "PROFESSOR1"
+          ],
+          "scheduledTimes": [
+            {
+              "day": "Segunda",
+              "shortDay": "seg",
+              "startTime": "08:30",
+              "endTime": "10:10",
+              "location": "Classroom 123 - Building 456",
+              "locationMap": "http://link.com/to/location1"
+            },
+            {
+              "day": "Quarta",
+              "shortDay": "qua",
+              "startTime": "08:30",
+              "endTime": "10:10",
+              "location": "Classroom 123 - Building 456",
+              "locationMap": "http://link.com/to/location1"
+            }
+          ]
+        }
+      ],
+      "credits": 4,
+      "classPlan": "http://link.com/to/classplan1.pdf"
+    },
+    {
+      "name": "Class2 - (CODE2)",
+      "timeslots": [
+        {
+          "classIdentifier": "U",
+          "availableSlots": 20,
+          "professors": [
+            "PROFESSOR2"
+          ],
+          "scheduledTimes": [
+            {
+              "day": "Terça",
+              "shortDay": "ter",
+              "startTime": "13:30",
+              "endTime": "15:10",
+              "location": "",
+              "locationMap": null
+            },
+            {
+              "day": "Quinta",
+              "shortDay": "qui",
+              "startTime": "13:30",
+              "endTime": "15:10",
+              "location": "",
+              "locationMap": null
+            }
+          ]
+        }
+      ],
+      "credits": 4,
+      "classPlan": "http://link.com/to/classplan2.pdf"
+    }
+  ]
