@@ -3,7 +3,6 @@ package infra.endpoints
 import application.UfrgsService
 import model.CollegeClass
 import model.KeyNotRegisteredException
-import model.ScheduleTime
 import model.Timeslot
 import org.springframework.http.ResponseEntity
 import spring.ApiResponse

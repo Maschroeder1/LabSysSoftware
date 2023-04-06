@@ -1,21 +1,18 @@
 package spring
 
 import application.UfrgsService
-import com.google.gson.Gson
 import infra.*
 import infra.endpoints.EnrollmentDeclarationEndpoint
 import infra.endpoints.LoginEndpoint
 import infra.endpoints.RetrieveClassesEndpoint
 import infra.endpoints.StartClassesEndpoint
+import kotlinx.coroutines.*
 import model.*
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import org.springframework.http.HttpHeaders
-import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import kotlinx.coroutines.*
 import java.net.http.HttpClient
 
 @SpringBootApplication

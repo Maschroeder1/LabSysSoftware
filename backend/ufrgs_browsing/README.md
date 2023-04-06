@@ -2,6 +2,8 @@
 
 ## Endpoints
 
+### For all possible endpoint status codes and messages, check ./src/main/kotlin/infra/endpoints
+
 ### POST /api/login
 Expected request example:
 ```
@@ -34,32 +36,47 @@ Empty body with POST response content as key
 Expected response:
 ```
 {
-    "message": "Ok",
-    "content": {
-        "CLASS 1 - (CODE1)": {
-            "timeslots": [
-                {
-                    "classIdentifier": "U",
-                    "availableSlots": 30,
-                    "professors": [
-                        "PROFESSOR NAME"
-                    ],
-                    "scheduledTimes": [
-                        {
-                            "day": "Quarta",
-                            "startTime": "08:30",
-                            "endTime": "11:50",
-                            "location": "SALA DE AULA 123 - PRÉDIO 456 4",
-                            "locationMap": null
-                        }
-                    ]
-                }
-            ],
-            "credits": 4,
-            "classPlan": "http://www1.ufrgs.br/path/to/class/plan/pdf"
-        },
-        "CLASS 2 (CODE2)": null
+    "message": "Processing",
+    "content": [
+    {
+      "name": "Class1 - (CODE1)",
+      "timeslots": [
+        {
+          "classIdentifier": "U",
+          "availableSlots": 10,
+          "professors": [
+            "PROFESSOR1"
+          ],
+          "scheduledTimes": [
+            {
+              "day": "Segunda",
+              "shortDay": "seg",
+              "startTime": "08:30",
+              "endTime": "10:10",
+              "location": "Classroom 123 - Building 456",
+              "locationMap": "http://link.com/to/location1"
+            },
+            {
+              "day": "Quarta",
+              "shortDay": "qua",
+              "startTime": "08:30",
+              "endTime": "10:10",
+              "location": "Classroom 123 - Building 456",
+              "locationMap": "http://link.com/to/location1"
+            }
+          ]
+        }
+      ],
+      "credits": 4,
+      "classPlan": "http://link.com/to/classplan1.pdf"
+    },
+    {
+      "name": "Class2 - (CODE2)",
+      "timeslots": null,
+      "credits": null,
+      "classPlan": null
     }
+  ]
 }
 ```
 Where a null value represents a class still being processed
