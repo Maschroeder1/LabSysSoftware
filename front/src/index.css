@@ -15,6 +15,7 @@
     height: 50vh;
     background: white;
     z-index: 100;
+    padding: 1rem;
 }
 
 .layer {

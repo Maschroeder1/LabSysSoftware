@@ -5,92 +5,145 @@ import {Login} from "./login";
 import {initializeClasses, retrieveClasses, retrieveEnrollmentDeclaration} from "./requests";
 
 class App extends Component {
-/* 
-  const test = {
-    "message": "Ok",
-    "content": {
-      "CLASS 1 - (CODE1)": {
+
+  test = {
+    "message": "Processing",
+    "content": [
+      {
+        "name": "Class1 - (CODE1)",
         "timeslots": [
           {
             "classIdentifier": "U",
-            "availableSlots": 30,
+            "availableSlots": 10,
             "professors": [
-              "PROFESSOR NAME"
+              "PROFESSOR1"
             ],
             "scheduledTimes": [
               {
-                "day": "Quarta",
+                "day": "Segunda",
+                "shortDay": "seg",
                 "startTime": "08:30",
-                "endTime": "11:50",
-                "location": "SALA DE AULA 123 - PRÉDIO 456 4",
-                "locationMap": null
+                "endTime": "10:10",
+                "location": "Classroom 123 - Building 456",
+                "locationMap": "http://link.com/to/location1"
+              },
+              {
+                "day": "Quarta",
+                "shortDay": "qua",
+                "startTime": "08:30",
+                "endTime": "10:10",
+                "location": "Classroom 123 - Building 456",
+                "locationMap": "http://link.com/to/location1"
               }
             ]
           }
         ],
-        "credits": 4
+        "credits": 4,
+        "classPlan": "http://link.com/to/classplan1.pdf"
       },
-      "CLASS 2 (CODE2)": null
-    }
-  }
+      {
+        "name": "Class2 - (CODE2)",
+        "timeslots": null,
+        "credits": null,
+        "classPlan": null
+      }
+    ]
+  };
   calendars = [
     [
       {
-        "name": "Tecnica de construcao de Programas",
-        "classIdentifier": "U",
-        "availableSlots": 30,
-        "credits": 4,
-        "professors": [
-          "PROFESSOR NAME"
-        ],
-        "scheduledTimes": [
+        "name": "Class1 - (CODE1)",
+        "timeslots": [
           {
-            "shortDay": "qua", // suggestion
-            "day": "Quarta",
-            "startTime": "08:10",
-            "endTime": "11:50",
-            "location": "SALA DE AULA 123 - PRÉDIO 456 4",
-            "locationMap": null
+            "classIdentifier": "T",
+            "availableSlots": 10,
+            "professors": [
+              "PROFESSOR1"
+            ],
+            "scheduledTimes": [
+              {
+                "day": "Segunda",
+                "shortDay": "seg",
+                "startTime": "08:30",
+                "endTime": "10:10",
+                "location": "Classroom 123 - Building 456",
+                "locationMap": "http://link.com/to/location1"
+              },
+              {
+                "day": "Quarta",
+                "shortDay": "qua",
+                "startTime": "08:30",
+                "endTime": "10:10",
+                "location": "Classroom 123 - Building 456",
+                "locationMap": "http://link.com/to/location1"
+              }
+            ]
           },
           {
-            "shortDay": "seg", // suggestion
-            "day": "Segunda",
-            "startTime": "08:30",
-            "endTime": "11:50",
-            "location": "SALA DE AULA 123 - PRÉDIO 456 4",
-            "locationMap": null
+            "classIdentifier": "U",
+            "availableSlots": 1,
+            "professors": [
+              "PROFESSOR1"
+            ],
+            "scheduledTimes": [
+              {
+                "day": "Terca",
+                "shortDay": "ter",
+                "startTime": "08:30",
+                "endTime": "10:10",
+                "location": "Classroom 123 - Building 456",
+                "locationMap": "http://link.com/to/location1"
+              },
+              {
+                "day": "Quinta",
+                "shortDay": "qui",
+                "startTime": "08:30",
+                "endTime": "10:10",
+                "location": "Classroom 123 - Building 456",
+                "locationMap": "http://link.com/to/location1"
+              }
+            ]
           }
-        ]
+        ],
+        "credits": 4,
+        "classPlan": "http://link.com/to/classplan1.pdf"
       },
       {
-        "name": "Circutios Doidos",
-        "classIdentifier": "U",
-        "availableSlots": 30,
-        "credits": 4,
-        "professors": [
-          "PROFESSOR NAME"
-        ],
-        "scheduledTimes": [
+        "name": "Class2 - (CODE1)",
+        "timeslots": [
           {
-            "shortDay": "ter", // suggestion
-            "day": "Terca",
-            "startTime": "08:30",
-            "endTime": "11:50",
-            "location": "SALA DE AULA 123 - PRÉDIO 456 4",
-            "locationMap": null
-          },
-          {
-            "shortDay": "qui", // suggestion
-            "day": "Quinta",
-            "startTime": "08:30",
-            "endTime": "11:50",
-            "location": "SALA DE AULA 123 - PRÉDIO 456 4",
-            "locationMap": null
+            "classIdentifier": "U",
+            "availableSlots": 10,
+            "professors": [
+              "PROFESSOR1"
+            ],
+            "scheduledTimes": [
+              {
+                "day": "Segunda",
+                "shortDay": "seg",
+                "startTime": "08:30",
+                "endTime": "10:10",
+                "location": "Classroom 123 - Building 456",
+                "locationMap": "http://link.com/to/location1"
+              },
+              {
+                "day": "Quarta",
+                "shortDay": "qua",
+                "startTime": "08:30",
+                "endTime": "10:10",
+                "location": "Classroom 123 - Building 456",
+                "locationMap": "http://link.com/to/location1"
+              }
+            ]
           }
-        ]
-      } 
+        ],
+        "credits": 4,
+        "classPlan": "http://link.com/to/classplan1.pdf"
+      }
     ]
-  ]*/
+  ]
+
+
   firstFetch = true // fiz soh para nao spammar, tem que ver maneira melhor de fazer
   firstInitializeRequest = true
   firstEnrollmentRequest = true
