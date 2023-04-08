@@ -8,24 +8,25 @@ export const Login = ({loginCallback}) => {
 
     return <div>
         <div className="login-wrapper">
-
-        <div>Login: <input onChange={(e) => setLogin(e.target.value)}/></div>
-        <div>Senha: <input onChange={(e) => setPassword(e.target.value)} type="password"/></div>
-            <button onClick={async () => {
-                const loginResponse = await requestLogin(login, password)
-                
-                switch (loginResponse.statusCode) {
-                    case 200:
-                        loginCallback(true)
-                        break
-                    case 400: // input mal formatado, user e/ou senha vazio, ou captcha
-                    case 401: // user/senha invalido
-                    case 504: // erro de network com a ufrgs
-                    case 500: // erro pegando cookie da resposta da ufrgs
-                    default: // nao deve ser possivel
-                }
+        <div><img src={require('./ufrgs_logo.jpg')} alt="UFRGS"></img></div>
+        <div className="login-input">Login: <input onChange={(e) => setLogin(e.target.value)}/></div>
+        <div className="login-input">Senha: <input onChange={(e) => setPassword(e.target.value)} type="password"/></div>
+        <button onClick={async () => {
+            const loginResponse = await requestLogin(login, password)
+            
+            switch (loginResponse.statusCode) {
+                case 200:
+                    loginCallback(true)
+                    break
+                case 400: // input mal formatado, user e/ou senha vazio, ou captcha
+                case 401: // user/senha invalido
+                case 504: // erro de network com a ufrgs
+                case 500: // erro pegando cookie da resposta da ufrgs
+                default: // nao deve ser possivel
             }
-            }>Logar!</button>
+        }
+        }>Enviar</button>
+
         </div>
     </div>
 }

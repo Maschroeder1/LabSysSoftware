@@ -5,7 +5,7 @@ import {Login} from "./login";
 import {initializeClasses, retrieveClasses, retrieveEnrollmentDeclaration} from "./requests";
 
 class App extends Component {
-
+/* 
   const test = {
     "message": "Ok",
     "content": {
@@ -88,9 +88,9 @@ class App extends Component {
             "locationMap": null
           }
         ]
-      }
+      } 
     ]
-  ]
+  ]*/
   firstFetch = true // fiz soh para nao spammar, tem que ver maneira melhor de fazer
   firstInitializeRequest = true
   firstEnrollmentRequest = true
