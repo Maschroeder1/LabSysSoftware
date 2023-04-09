@@ -137,7 +137,7 @@ class Calendar extends Component {
                   rel="noreferrer"
               >
               </a> </div>
-              <div>Plano de Ensino: <a href={modalContent.events[0].locationMap}>Link</a><a
+              <div>Plano de Ensino: <a href={modalContent.events[0].classPlan}>Link</a><a
                   href={modalContent.events[0].classPlan}
                   target="_blank"
                   rel="noreferrer"
