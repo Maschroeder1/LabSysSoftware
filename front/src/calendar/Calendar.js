@@ -131,17 +131,17 @@ class Calendar extends Component {
               <p>vagas: {modalContent.availableSlots}</p>
               <p>professores</p>
               <ul>{modalContent.professors.map(professor => <li>{professor}</li>)}</ul>
-              <div>Local: <a href={modalContent.events[0].locationMap}>Link</a><a
+              <div>Local: <a
                   href={modalContent.events[0].locationMap}
                   target="_blank"
                   rel="noreferrer"
-              >
+              > Link
               </a> </div>
-              <div>Plano de Ensino: <a href={modalContent.events[0].classPlan}>Link</a><a
+              <div>Plano de Ensino:<a
                   href={modalContent.events[0].classPlan}
                   target="_blank"
                   rel="noreferrer"
-              >
+              > Link
               </a>  </div>
 
 
