@@ -13,7 +13,7 @@ export const Login = ({loginCallback}) => {
         <div className="login-input">Senha: <input onChange={(e) => setPassword(e.target.value)} type="password"/></div>
         <button onClick={async () => {
             if (false) {
-                // loginCallback(true)
+                loginCallback(true)
             } else {
             const loginResponse = await requestLogin(login, password)
             
