@@ -25,17 +25,19 @@ const createEventsFromCadeira = (cadeira) => {
 }
 
 const createActualTurma = (calendario) => {
-  return calendario.flatMap(cadeira => {
-    return cadeira.timeslots.map(turma => {
-      const name = cadeira.name + ' ' + turma.classIdentifier
-      return {
-        availableSlots: turma.availableSlots,
-        professors: turma.professors,
-        name,
-        events: createEventsFromTurma(turma, name),
-        isOnCalendar: false,
-      }
-    })
+  return calendario
+    .filter(cadeira => { return !!cadeira.timeslots })
+    .flatMap(cadeira => {
+      return cadeira.timeslots.map(turma => {
+        const name = cadeira.name + ' ' + turma.classIdentifier
+        return {
+          availableSlots: turma.availableSlots,
+          professors: turma.professors,
+          name,
+          events: createEventsFromTurma(turma, name),
+          isOnCalendar: false,
+        }
+      })
   })
 }
 
@@ -79,6 +81,15 @@ class Calendar extends Component {
 
       },
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.calendario !== prevProps.calendario) {
+      const calendario = this.props?.calendario ?? [[]]
+      const tchurmas = createActualTurma(calendario)
+  
+      this.setState({...this.state, tchurmas});
+    }
   }
 
   componentDidMount() {

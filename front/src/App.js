@@ -49,7 +49,7 @@ class App extends Component {
       }
     ]
   };
-  calendars = [
+  calendarz = [
     [
       {
         "name": "Class1 - (CODE1)",
@@ -153,7 +153,8 @@ class App extends Component {
     this.state = {
       isLoggedIn: false,
       requestCode: false,
-      enrollmentDeclarationLink: ''
+      enrollmentDeclarationLink: '',
+      calendars: []
     }
   }
 
@@ -185,6 +186,9 @@ class App extends Component {
       let sleep = () => new Promise(resolve => setTimeout(resolve, 1000))
 
       while (respose.statusCode === 206) { // resultado parcial, ficar dando query ateh completo
+        if (this.state.calendars !== respose.content.content) {
+          this.setState({...this.state, calendars: respose.content.content})
+        }
         console.log("Resultado parcial")
         console.log(respose.content.content) // probs setState?
         await sleep() // 1 query/sec
@@ -193,6 +197,7 @@ class App extends Component {
 
       switch (respose.statusCode) {
         case 200:
+          this.setState({...this.state, calendars: respose.content.content})
           console.log("Resultado completo")
           console.log(respose.content.content) // probs setState
           break
@@ -238,7 +243,8 @@ class App extends Component {
         this.retrieveRequestCode()
       }
       this.getEnrollmentDeclaration()
-      return this.calendars.map((item) => <Calendar calendario={item}/>)
+      // return this.calendarz.map((item) => <Calendar calendario={item}/>)
+      return <Calendar calendario={this.state.calendars}/>
     } else {
       return <Login loginCallback={(isLoggedIn) => this.setState({...this.state, isLoggedIn: isLoggedIn})}/>
     }
