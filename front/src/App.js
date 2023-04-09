@@ -243,10 +243,10 @@ class App extends Component {
         this.retrieveRequestCode()
       }
       this.getEnrollmentDeclaration()
-      return this.calendarz.map((item) => <Calendar calendario={item} comprovante = {"http://www.google.com"}/>)
-      // return <Calendar calendario={this.state.calendars} comprovante = {this.state.enrollmentDeclarationLink}/>
+      // return this.calendarz.map((item) => <Calendar calendario={item} comprovante = {"http://www.google.com"}/>)
+      return <Calendar calendario={this.state.calendars} comprovante = {this.state.enrollmentDeclarationLink}/>
     } else {
-      return <Login loginCallback={(isLoggedIn) => this.setState({...this.state, isLoggedIn: isLoggedIn, enrollmentDeclarationLink: "google.com"})}/>
+      return <Login loginCallback={(isLoggedIn) => this.setState({...this.state, isLoggedIn: isLoggedIn})}/>
     }
   }
 
