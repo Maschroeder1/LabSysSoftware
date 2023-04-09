@@ -106,7 +106,7 @@ class App extends Component {
           }
         ],
         "credits": 4,
-        "classPlan": "http://link.com/to/classplan1.pdf"
+        "classPlan": "http://link.com/to/location1"
       },
       {
         "name": "Class2 - (CODE1)",
@@ -138,7 +138,7 @@ class App extends Component {
           }
         ],
         "credits": 4,
-        "classPlan": "http://link.com/to/classplan1.pdf"
+        "classPlan": "http://link.com/to/location3"
       }
     ]
   ]
@@ -243,8 +243,8 @@ class App extends Component {
         this.retrieveRequestCode()
       }
       this.getEnrollmentDeclaration()
-      // return this.calendarz.map((item) => <Calendar calendario={item}/>)
-      return <Calendar calendario={this.state.calendars}/>
+      return this.calendarz.map((item) => <Calendar calendario={item}/>)
+     // return <Calendar calendario={this.state.calendars}/>
     } else {
       return <Login loginCallback={(isLoggedIn) => this.setState({...this.state, isLoggedIn: isLoggedIn})}/>
     }

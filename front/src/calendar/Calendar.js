@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {DayPilot, DayPilotCalendar} from "daypilot-pro-react";
+import {DayPilotCalendar} from "daypilot-pro-react";
 import "./calendar.css"
 
 const days = {
@@ -10,20 +10,17 @@ const days = {
   sex:"2023-04-07T",
 }
 
-const createEventTimes = (scheduledTime, name, locationMap) => ({
+const createEventTimes = (scheduledTime, name, locationMap, classPlan) => ({
   start: days[scheduledTime.shortDay] + scheduledTime.startTime + ":00",
   end: days[scheduledTime.shortDay] + scheduledTime.endTime + ":00",
   text: name,
-  locationMap: locationMap,
+  locationMap,
+  classPlan,
 })
 
-const createEventsFromTurma = (cadeira, name) => {
-  return cadeira.scheduledTimes.map(scheduledTime => createEventTimes(scheduledTime, name, scheduledTime.locationMap) )
+const createEventsFromTurma = (cadeira, name, classPlan) => {
+  return cadeira.scheduledTimes.map(scheduledTime => createEventTimes(scheduledTime, name, scheduledTime.locationMap, classPlan) )
 }
-const createEventsFromCadeira = (cadeira) => {
-  return cadeira.timeslots.flatMap(turma => createEventsFromTurma(turma, cadeira.name) )
-}
-
 const createActualTurma = (calendario) => {
   return calendario
     .filter(cadeira => { return !!cadeira.timeslots })
@@ -34,8 +31,9 @@ const createActualTurma = (calendario) => {
           availableSlots: turma.availableSlots,
           professors: turma.professors,
           name,
-          events: createEventsFromTurma(turma, name),
+          events: createEventsFromTurma(turma, name, cadeira.classPlan),
           isOnCalendar: false,
+          classPlan: cadeira.classPlan,
         }
       })
   })
@@ -87,7 +85,7 @@ class Calendar extends Component {
     if (this.props.calendario !== prevProps.calendario) {
       const calendario = this.props?.calendario ?? [[]]
       const tchurmas = createActualTurma(calendario)
-  
+
       this.setState({...this.state, tchurmas});
     }
   }
@@ -96,10 +94,6 @@ class Calendar extends Component {
 
     const calendario = this.props?.calendario ?? [[]]
 
-
-    // const events = this.props.calendario.flatMap(
-    //     cadeira => createEventsFromCadeira(cadeira)
-    // )
 
     const events = []
 
@@ -135,6 +129,8 @@ class Calendar extends Component {
               <p>professores</p>
               <ul>{modalContent.professors.map(professor => <li>{professor}</li>)}</ul>
               <div>Local: <a href={modalContent.events[0].locationMap}>Link</a> </div>
+              <div>Plano de ensino: <a href={modalContent.events[0].classPlan}>Link</a> </div>
+
 
               <button onClick={() => {
                 const newTchurmas = this.state.tchurmas.map(item => item)
