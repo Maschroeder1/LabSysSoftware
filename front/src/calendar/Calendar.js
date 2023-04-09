@@ -21,6 +21,7 @@ const createEventTimes = (scheduledTime, name, locationMap, classPlan) => ({
 const createEventsFromTurma = (cadeira, name, classPlan) => {
   return cadeira.scheduledTimes.map(scheduledTime => createEventTimes(scheduledTime, name, scheduledTime.locationMap, classPlan) )
 }
+
 const createActualTurma = (calendario) => {
   return calendario
     .filter(cadeira => { return !!cadeira.timeslots })
@@ -92,6 +93,8 @@ class Calendar extends Component {
 
   componentDidMount() {
 
+    console.log( {state: this.state, props: this.props})
+
     const calendario = this.props?.calendario ?? [[]]
 
 
@@ -155,6 +158,16 @@ class Calendar extends Component {
           </>}
           <div className="wrapper">
             <div className="menu">
+              {
+                !!this.props.comprovante &&
+                <div>
+                  <button
+                      onClick={() => {
+                        window.open(this.props.comprovante, '_blank', 'noreferrer');
+                      }
+                      } className="tchurma-button">{"Download histórico de matrícula"}</button>
+                </div>
+              }
               {this.state?.tchurmas?.map(classe => {
 
                 return <div>
