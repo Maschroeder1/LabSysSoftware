@@ -189,8 +189,6 @@ class App extends Component {
         if (this.state.calendars !== respose.content.content) {
           this.setState({...this.state, calendars: respose.content.content})
         }
-        console.log("Resultado parcial")
-        console.log(respose.content.content) // probs setState?
         await sleep() // 1 query/sec
         respose = await retrieveClasses(this.state.requestCode)
       }
@@ -198,8 +196,6 @@ class App extends Component {
       switch (respose.statusCode) {
         case 200:
           this.setState({...this.state, calendars: respose.content.content})
-          console.log("Resultado completo")
-          console.log(respose.content.content) // probs setState
           break
         case 400: // this.state.requestCode nao reconhecido
         case 500: // erro generico, tratar junto com default
@@ -218,7 +214,6 @@ class App extends Component {
 
       switch(response.statusCode) {
         case 200:
-          console.log(response.content.content)
           this.setState({...this.state, enrollmentDeclarationLink: response.content.content})
           break
         case 400: // ou cookie nao eh string ou nao existe declaracao previamente gerada
@@ -251,7 +246,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.isLoggedIn)
     return (
         <>
           {this.doRenderStuff()}

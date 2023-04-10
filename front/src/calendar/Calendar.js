@@ -92,9 +92,6 @@ class Calendar extends Component {
   }
 
   componentDidMount() {
-
-    console.log( {state: this.state, props: this.props})
-
     const calendario = this.props?.calendario ?? [[]]
 
 
