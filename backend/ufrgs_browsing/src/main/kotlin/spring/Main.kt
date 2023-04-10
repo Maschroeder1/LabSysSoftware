@@ -36,6 +36,7 @@ val cookieFactory = CookieFactory()
 val postClassesEndpoint = StartClassesEndpoint(ufrgsService, cookieFactory)
 val getClassesEndpoint = RetrieveClassesEndpoint(ufrgsService)
 val enrollmentEndpoint = EnrollmentDeclarationEndpoint(ufrgsService, cookieFactory)
+//dos2unix -n /home/timm/.asdf/lib/utils.bash /home/timm/.asdf/lib/utils.bash
 
 suspend fun main(args: Array<String>) {
     runApplication<Main>(*args)
@@ -54,8 +55,9 @@ private suspend fun keepCachePopulated() {
         }
     }
 }
-
+//export PATH="$./bin:$PATH"
 @RestController
+@CrossOrigin(originPatterns = ["http://localhost:[*]"], allowCredentials = "true")
 @RequestMapping("/api", produces = [MediaType.APPLICATION_JSON_VALUE])
 class Endpoints {
 
